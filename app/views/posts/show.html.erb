@@ -2,6 +2,11 @@
 
 <%= render @post %>
 
+<p>
+  <strong>Автор:</strong>
+  <%= @post.author %>
+</p>
+
 <div>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
@@ -12,8 +17,8 @@
 <h2>Добавить коммент</h2>
 <%= render "comments/form" %>
 
-<h2>Comments</h2>
+<h2>Комменты</h2>
 
 <% @post.comments.each do |comment| %>
-  <p><%= comment.body %></p>
+  <%= render comment %>
 <% end %>

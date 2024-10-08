@@ -1,12 +1,13 @@
-<div id="<%= dom_id post %>" style="background: red;">
-  <p>
-    <strong>Title:</strong>
+<div id="<%= dom_id post %>" style="background: #cccccc; padding: .2rem .4rem">
+  <%= image_tag post.post_image.url, width: 400 %>
+  <h1>
     <%= post.title %>
-  </p>
+  </h1>
 
-  <p>
+  
+  <h3>
     <strong>Body:</strong>
     <%= post.body %>
-  </p>
+  </h3>
 
 </div>
