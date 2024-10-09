@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @collection %>
+
+<div>
+  <%= link_to "Back to collections", collections_path %>
+
+  <%= button_to "Destroy this collection", @collection, method: :delete %>
+</div>
+
+<h1><%= @collection.title %></h1>
+<p><%= @collection.body %></p>
+
+<h2>Posts in this Collection:</h2>
+
+<div class="posts-container">
+  <% @collection.posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>

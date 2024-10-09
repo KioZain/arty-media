@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_08_203011) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_09_164313) do
+  create_table "collections", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "collections_posts", id: false, force: :cascade do |t|
+    t.integer "collection_id", null: false
+    t.integer "post_id", null: false
+    t.index ["collection_id", "post_id"], name: "index_collections_posts_on_collection_id_and_post_id"
+    t.index ["post_id", "collection_id"], name: "index_collections_posts_on_post_id_and_collection_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "post_id", null: false
