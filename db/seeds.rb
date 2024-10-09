@@ -13,8 +13,8 @@ end
 # Setting the quantity of posts and comments --------------------
 def seed
   reset_db
-  create_posts(10)
-  create_comments(2..4)
+  create_posts(20)
+  create_comments(2..5)
 end
 
 # Creating array of words-----------------------------------------
