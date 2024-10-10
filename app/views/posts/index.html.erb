@@ -1,25 +1,20 @@
-<%= link_to "Posts", posts_path %> | <%= link_to "Collections", collections_path %>
-
 
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Posts" %>
 
-<h1>Посты</h1>
+<div class="Content">
+  <h1>Посты</h1>
+  <div class="A_Button"><%= link_to " + Создать пост", new_post_path %></div>
 
-<div class="A_Button"><%= link_to "Новый пост", new_post_path %></div>
-
-<div id="posts"  class="S_Posts">
-
-
-<% @posts.each do |post| %>
-  <div class="O_Post">
-  <%= render post %>
-  
-  <%= link_to "Открыть пост", post %>
+  <div id="posts"  class="S_Posts">
+    <% @posts.each do |post| %>
+      <div class="O_Post">
+      <%= render post %>
+      </div>
+    <% end %>
+    
   </div>
-<% end %>
-  
 </div>
 
 

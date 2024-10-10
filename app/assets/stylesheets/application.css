@@ -13,25 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+ *{
+    box-sizing: border-box;
+ }
 body{
-    h1,h2,h3,p,a {
+    margin: 0;
+    h1,h2,h3,p,a,form {
         font-family: Arial, Helvetica, sans-serif;
     }
 
     h1{
         font-size: 32px;
     }
+;
 }
 
-
+.Content{
+    width: 1285px;
+    margin: 0 auto;
+}
 .S_Posts{
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    width: 1285px;
-    margin: 0 auto;
+    width: 100%;
     justify-content: center;
     justify-content: flex-start;
+    margin-bottom: 10rem;
 }
 .O_Post{
     background: #cccccc;
@@ -60,5 +69,116 @@ body{
 
     .M_PostDescription{
         padding: 0.5rem;
+    }
+}
+.O_Collection{
+    background-color: #fdf8f8;
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    h1, h3{
+        color: black;
+    }
+    p > a {
+        color: black;
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 2px;
+        border: .5px solid black;
+    }
+
+    .M_CollectionDescription{
+        width: 70%;
+    }
+}
+
+.C_Collections{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 10rem;
+}
+
+
+.S_Header{
+    position: sticky;
+    background: white;
+    height: 64px;
+    border-radius: 1rem;
+    border: .5px solid black;
+    width: 1290px;
+    margin: 2rem auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1rem;
+
+    .C_Links{ 
+        display: flex;
+        column-gap: 1rem;
+
+        a{
+            color: black;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 4px 8px;
+            box-sizing: border-box;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
+.A_Button{
+    background-color: black;
+    padding: 1rem;
+    width: fit-content;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+
+    a{
+        color: white;
+        text-decoration: none;
+    }
+}
+.M_HeadLinks{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin:  2rem 0;
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .M_Options{
+        display: flex;
+        gap: .5rem;
+    }
+}
+.S_Comments{
+    padding-left: 2rem;
+}
+.A_Comment{
+    background-color: #f0ecec;
+    display: flex;
+    min-width: 840px;
+    flex-direction: column;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+
+    a{
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        border: .5px solid black;
+        padding: 4px 8px;
+        border-radius: 4px;
     }
 }

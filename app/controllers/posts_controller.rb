@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @collection = Collection.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   # GET /posts/new

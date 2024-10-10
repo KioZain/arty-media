@@ -1,12 +1,8 @@
-<div id="<%= dom_id collection %>">
-  <p>
-    <strong>Title:</strong>
-    <%= collection.title %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= collection.body %>
-  </p>
+<div  class="O_Collection"  id="<%= dom_id collection %>">
+  <div class="M_CollectionDescription">
+    <h1><%= collection.title %></h1>
+    <h3><%= collection.body %></h3>
+  </div>
+  <p><%= link_to "Посмотреть коллекцию", collection %></p>
 
 </div>

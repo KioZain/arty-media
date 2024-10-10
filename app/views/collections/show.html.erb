@@ -1,20 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="Content">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @collection %>
-
-<div>
-  <%= link_to "Back to collections", collections_path %>
-
-  <%= button_to "Destroy this collection", @collection, method: :delete %>
+  <div class="M_HeadLinks">
+    <%= link_to "<- В коллекции", collections_path %>
+    <%= button_to "Destroy this collection", @collection, method: :delete %>
+  </div>
+<div class="O_Collection">
+  <h1><%= @collection.title %></h1>
+  <p><%= @collection.body %></p>
 </div>
+  <h2>Крутые штуки:</h2>
 
-<h1><%= @collection.title %></h1>
-<p><%= @collection.body %></p>
-
-<h2>Posts in this Collection:</h2>
-
-<div class="posts-container">
-  <% @collection.posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
-  <% end %>
+  <div class="S_Posts">
+    <% @collection.posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
+  </div>
 </div>

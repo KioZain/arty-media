@@ -1,8 +1,8 @@
-<div class="" id="<%= dom_id post %>" style="">
-  
+<div class="O_Post" id="<%= dom_id post %>" style="">
   <%= image_tag post.post_image.url %>
   <div class="M_PostDescription">
     <h1><%= post.title %></h1>
     <h3><%= post.body %></h3>
   </div>
+      <%= link_to "Посмотреть вещицу", post %>
 </div>

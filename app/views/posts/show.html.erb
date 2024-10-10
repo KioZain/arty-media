@@ -1,24 +1,32 @@
+<div class="Content">
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
+  <div class="M_HeadLinks">
+    <%= link_to "<- К постам", posts_path %>
+    <div class="M_Options">
+      <%= link_to "Edit this post", edit_post_path(@post) %> |
+      <%= button_to "Destroy this post", @post, method: :delete %>
+    </div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+  </div>
+<div class="W_Post" style="display:flex">
+  <div class="S_Post">
+    <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+    <p>
+      <strong>Автор:</strong>
+      <%= @post.author %>
+    </p>
+  </div>
+  <div class="S_Comments">
+  <h2>Добавить коммент</h2>
+    <%= render "comments/form" %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+    <h2>Комменты</h2>
+
+    <% @post.comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
 </div>
-
-<h2>Добавить коммент</h2>
-<%= render "comments/form" %>
-
-<h2>Комменты</h2>
-
-<% @post.comments.each do |comment| %>
-  <%= render comment %>
-<% end %>
+</div>
