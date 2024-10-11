@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "static_pages/home"
   get "static_pages/about"
-  get "/about", to: "static_pages#about" # Маршрут для страницы about
+  get "/about", to: "static_pages#about"
 
 
   resources :collections
