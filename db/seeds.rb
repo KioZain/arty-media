@@ -56,17 +56,12 @@
 ]
 
 
-
-
-
 # Rake-----------------------------------------
 def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
 end
-
-
 
 
 # Setting the quantity of posts and comments --------------------
@@ -125,7 +120,10 @@ end
 def create_comments(quantity)
   Post.all.each do |post|
     quantity.to_a.sample.times do
-      comment = Comment.create(post_id: post.id, body: create_sentence)
+    comment = Comment.create(
+      post_id: post.id,
+      body: create_sentence
+      )
       puts "Comment with id #{comment.id} for post with id #{comment.post.id} just created"
     end
   end
