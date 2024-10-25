@@ -1,9 +1,11 @@
 class CollectionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_collection, only: %i[ show edit update destroy ]
+
 
   # GET /collections or /collections.json
   def index
-    @collections = Collection.all
+    @collections = current_user.collections
   end
 
   # GET /collections/1 or /collections/1.json
@@ -21,7 +23,7 @@ class CollectionsController < ApplicationController
 
   # POST /collections or /collections.json
   def create
-    @collection = Collection.new(collection_params)
+    @collection = current_user.collections.new(collection_params)
 
     respond_to do |format|
       if @collection.save

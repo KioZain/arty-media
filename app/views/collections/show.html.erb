@@ -3,6 +3,7 @@
 
   <div class="M_HeadLinks">
     <%= link_to "<- В коллекции", collections_path %>
+    <%= link_to 'Edit Collection', edit_collection_path(@collection), class: 'btn btn-primary' %>
     <%= button_to "Destroy this collection", @collection, method: :delete %>
   </div>
 <div class="O_Collection">

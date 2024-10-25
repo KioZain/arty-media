@@ -6,6 +6,7 @@
 
 
 <h1>Коллекции</h1>
+<div class="A_Button"><%= link_to " + Создать коллекцию", new_collection_path %></div>
 <div id="collections" class="C_Collections">
   <% @collections.each do |collection| %>
     <%= render collection %>

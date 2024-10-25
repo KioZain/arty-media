@@ -68,15 +68,15 @@ end
 def seed
   reset_db
   create_users(10)
-  create_posts(10)
-  create_comments(2..5)
-  create_collections(4)
+  create_posts(30)
+  create_comments(2..6)
+  create_collections(20)
 end
 
 def create_users(quantity)
   i = 0
 
-  quantity.to_a.sample.times do
+  quantity.times do
     user_data = {
       email: "user_#{i}@email.com",
       password: 'testtest'
@@ -124,13 +124,15 @@ end
 # Creating posts-----------------------------------------
 def create_posts(quantity)
   quantity.times do
+    user = User.all.sample
+
     post = Post.create(
       title: create_post_name,
       body: create_sentence,
       author: create_author,
-      post_image: upload_random_image
+      post_image: upload_random_image,
+      user: user
     )
-
     puts "Post with id #{post.id} just created"
   end
 end
@@ -141,7 +143,7 @@ def create_comments(quantity)
     quantity.to_a.sample.times do
     comment = Comment.create(
       post_id: post.id,
-      body: create_sentence
+      body: create_sentence,
       )
       puts "Comment with id #{comment.id} for post with id #{comment.post.id} just created"
     end
@@ -151,9 +153,13 @@ end
 # Creating collections
 def create_collections(quantity)
   quantity.times do
+    user = User.all.sample
+
     collection = Collection.create(
+      user: user,
       title: create_post_name,
       body: create_sentence
+
     )
     add_posts_to_collection(collection)
     puts "Collection '#{collection.title}' with id #{collection.id} created"
@@ -162,18 +168,24 @@ end
 
 # Linking posts to collection---------------------
 def add_posts_to_collection(collection)
-  post_count = rand(2..8)
+  # Получаем посты, принадлежащие пользователю, создавшему коллекцию
+  user_posts = Post.where(user: collection.user)
 
-  all_posts = Post.all.to_a
-  posts_to_add = all_posts.sample(post_count)
+  # Проверяем, есть ли у пользователя хотя бы 2 поста для добавления
+  return if user_posts.empty? || user_posts.count < 2
 
+  # Задаём количество постов для добавления, учитывая максимум в 8 постов
+  post_count = rand(2..[ user_posts.count, 8 ].min)
 
-  # Post check------------------------------------
+  # Выбираем случайные посты из списка постов пользователя
+  posts_to_add = user_posts.sample(post_count)
+
+  # Добавляем посты в коллекцию
   posts_to_add.each do |post|
     collection.posts << post unless collection.posts.include?(post)
-
     puts "Post with id #{post.id} added to Collection '#{collection.title}'"
   end
 end
+
 
 seed
