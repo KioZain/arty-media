@@ -18,8 +18,9 @@
   </head>
 
   <body>
-    <%= render 'device/shared/links' %>
+    <p style="color: red;"> <%= alert %> </p>
      <%= render 'layouts/header' %>
     <%= yield %>
+   <%= render 'layouts/footer' %>
   </body>
 </html>

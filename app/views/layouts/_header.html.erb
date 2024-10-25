@@ -5,4 +5,15 @@
       <%= link_to "Посты", posts_path %>
       <%= link_to "Коллекции", collections_path %>
   </nav>
+  <nav class="C_Links">
+    <% if user_signed_in? %>
+      <%# <p>РЕСПЕКТ</p> %>
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <%= link_to "Выйти", destroy_user_session_path, data: { "turbo-method": :delete } %>
+    <% else %>
+      <%# <p>ДИЗРЕСПЕКТ</p> %>
+    <% end %>
+      <%= link_to "Войти", new_user_session_path %>
+      <%= link_to "Регистрация", new_user_registration_path %>
+    </nav>
 </header>
