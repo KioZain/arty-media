@@ -1,11 +1,16 @@
 class CollectionsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_collection, only: %i[ show edit update destroy ]
 
 
   # GET /collections or /collections.json
   def index
-    @collections = current_user.collections
+    if current_user
+      @collections = current_user.collections
+    else
+      @collections = Collection.where(public: true)
+    end
   end
 
   # GET /collections/1 or /collections/1.json

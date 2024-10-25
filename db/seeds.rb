@@ -68,9 +68,9 @@ end
 def seed
   reset_db
   create_users(10)
-  create_posts(30)
+  create_posts(72)
   create_comments(2..6)
-  create_collections(20)
+  create_collections(24)
 end
 
 def create_users(quantity)
@@ -89,7 +89,10 @@ def create_users(quantity)
   end
 end
 
-
+# Public or Private
+def get_random_bool
+  [ true, false ].sample
+end
 
 # Author
 def create_author
@@ -131,6 +134,7 @@ def create_posts(quantity)
       body: create_sentence,
       author: create_author,
       post_image: upload_random_image,
+      public: get_random_bool,
       user: user
     )
     puts "Post with id #{post.id} just created"
@@ -159,6 +163,7 @@ def create_collections(quantity)
       user: user,
       title: create_post_name,
       body: create_sentence
+      # Вот тут добавить public
 
     )
     add_posts_to_collection(collection)
