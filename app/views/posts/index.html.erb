@@ -1,9 +1,7 @@
-
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Posts" %>
 
 <div class="Content">
+  <p style="color: green"><%= notice %></p>
   <h1>Посты</h1>
   <div class="A_Button"><%= link_to " + Создать пост", new_post_path %></div>
 
@@ -16,5 +14,4 @@
     
   </div>
 </div>
-
-
+<%= render plain: 'OK' %>
