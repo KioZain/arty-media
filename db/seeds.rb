@@ -161,12 +161,13 @@ end
 def create_collections(quantity)
   quantity.times do
     user = User.all.sample
+    public_status = get_random_bool
 
     collection = Collection.create(
       user: user,
       title: create_post_name,
-      body: create_sentence
-      # Вот тут добавить public
+      body: create_sentence,
+      public: public_status
 
     )
     add_posts_to_collection(collection)

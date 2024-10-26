@@ -2,10 +2,12 @@
 <p style="color: green"><%= notice %></p>
 
   <div class="M_HeadLinks">
-    <%= link_to "<- К постам", posts_path %>
+    <%= link_to "<- К постам", admin_posts_path %>
     <div class="M_Options">
-      <%= link_to "Edit this post", edit_post_path(@post) %> |
-      <%= button_to "Destroy this post", @post, method: :delete %>
+      <% if current_user && current_user.admin?%>
+      <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
+      <%= button_to "Destroy this post", admin_posts_path(@post), method: :delete %>
+      <% end %>
     </div>
 
   </div>
@@ -20,12 +22,13 @@
   </div>
   <div class="S_Comments">
   <h2>Добавить коммент</h2>
-    <%= render "comments/form" %>
+    <%= render "admin/comments/form" %>
 
     <h2>Комменты</h2>
 
     <% @post.comments.each do |comment| %>
-      <%= render comment %>
+     <%= render 'admin/comments/comment', comment: comment %>
+
     <% end %>
   </div>
 </div>

@@ -1,9 +1,10 @@
-<%= form_with(model: collection) do |form| %>
-  <% if collection.errors.any? %>
+<%= form_with(model: [:admin, @collection]) do |form| %>
+  
+<% if @collection.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
+      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
       <ul>
-        <% collection.errors.each do |error| %>
+        <% @collection.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

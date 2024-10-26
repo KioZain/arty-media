@@ -1,27 +1,33 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "static_pages/home"
-  get "static_pages/about"
-  get "/about", to: "static_pages#about"
 
 
-  resources :collections
-  resources :posts do
-    resources :comments
+  resources :posts, only: [ :index, :show ]
+  resources :collections, only: [ :index, :show ]
+
+  namespace :admin do
+    resources :collections, except: [ :index, :show ]
+    resources :posts, except: [ :index, :show ] do
+      resources :comments
+    end
   end
 
-namespace :admin do
-  resources :posts, only: [ :index ]
-end
+  get "static_pages/home"
+  get "/about", to: "static_pages#about"
 
-  # root path
-  root "static_pages#home"
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+
+
+  # root path
+  root "static_pages#home"
 end
+
+
 
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

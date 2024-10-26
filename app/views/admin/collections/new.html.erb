@@ -1,0 +1,11 @@
+<% content_for :title, "Новая коллекция" %>
+
+<h1>New collection</h1>
+
+<%= render "form", collection: @collection %>
+
+<br>
+
+<div>
+  <%= link_to "Обратно в коллекции", admin_collections_path %>
+</div>

@@ -1,18 +1,18 @@
 <header class="S_Header">
   <nav class="C_Links">
-
+    <%= link_to "Главная", root_path %>
+    <%= link_to "О медиа", about_path %>
     <%# Admin link %>
-      <% if user_signed_in? && current_user.admin?%>
-        <%= link_to "Проекты", admin_posts_url %>
-      <% else %>
-        <%= link_to "Посты", posts_path %>
-      <% end%>
+
+    <%# <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "Работы", posts_url %>
+      <%= link_to "Коллекции", collections_path %>
+
 
     <%# User links %>
-      <%= link_to "Главная", root_path %>
-      <%= link_to "О медиа", about_path %>
+      <%# <%= link_to "Главная", root_path %>
+      <%# <%= link_to "О медиа", about_path %>
       
-      <%= link_to "Коллекции", collections_path %>
   </nav>
   <nav class="C_Links">
     <% if user_signed_in? %>

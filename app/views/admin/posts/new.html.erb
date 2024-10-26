@@ -1,14 +1,13 @@
 <div class="Content">
-  <% content_for :title, "Editing post" %>
+  <% content_for :title, "New post" %>
 
-  <h1>Editing post</h1>
+  <h1>Добавить вещицу</h1>
 
   <%= render "form", post: @post %>
 
   <br>
 
   <div>
-    <%= link_to "Show this post", @post %> |
     <%= link_to "Back to posts", posts_path %>
   </div>
 </div>
