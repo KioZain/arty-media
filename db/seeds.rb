@@ -82,6 +82,9 @@ def create_users(quantity)
       password: 'testtest'
     }
 
+    if i == 0
+      user_data[:admin] = true
+    end
     user = User.create!(user_data)
     puts "User created with id #{user.id}"
 
