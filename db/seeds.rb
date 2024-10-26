@@ -137,7 +137,7 @@ def create_posts(quantity)
       public: get_random_bool,
       user: user
     )
-    puts "Post with id #{post.id} just created"
+    puts "Post with id #{post.id} and user id:#{user.id} just created"
   end
 end
 
@@ -149,7 +149,7 @@ def create_comments(quantity)
       post_id: post.id,
       body: create_sentence,
       )
-      puts "Comment with id #{comment.id} for post with id #{comment.post.id} just created"
+      # puts "Comment with id #{comment.id} for post with id #{comment.post.id} just created"
     end
   end
 end
