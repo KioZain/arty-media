@@ -2,12 +2,20 @@
 <p style="color: green"><%= notice %></p>
 
   <div class="M_HeadLinks">
-    <%= link_to "<- К постам", admin_posts_path %>
-    <div class="M_Options">
-      <% if current_user && current_user.admin?%>
-      <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
-      <%= button_to "Destroy this post", admin_posts_path(@post), method: :delete %>
+      <% if params[:collection_id].present? %>
+        <%= link_to "<- Вернуться в коллекцию", collection_path(params[:collection_id]) %>
+      <% else %>
+        <%= link_to "<- К постам", posts_path %>
       <% end %>
+
+
+    <div class="M_Options">
+
+      <% if can? :manage, @post%>
+        <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
+        <%= button_to "Destroy this post", admin_post_path(@post), method: :delete %>
+      <% end %>
+
     </div>
 
   </div>

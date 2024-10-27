@@ -1,8 +1,10 @@
 <div class="O_Post" id="<%= dom_id post %>" style="">
-  <%= image_tag post.post_image.url %>
+
+    <%= image_tag post.post_image.url %>
+
   <div class="M_PostDescription">
     <h1><%= post.title %></h1>
-    <h3><%= post.body %></h3>
+    <h3><%= post.user.email %></h3>
   </div>
-      <%= link_to "Посмотреть вещицу", [:admin, post] %>
+      <%= link_to "Посмотреть вещицу", post_path(post) %>
 </div>
