@@ -1,0 +1,29 @@
+.Alignment {
+  display: flex;
+  height: 50vh;
+  .O_FormRegistraion {
+    margin: auto;
+    width: fit-content;
+
+    h2 {
+      font-size: 1.5rem;
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    .A_SignUp {
+      margin-bottom: 2rem;
+      input {
+        width: 100%;
+      }
+    }
+    a {
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

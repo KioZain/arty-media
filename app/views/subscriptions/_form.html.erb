@@ -1,11 +1,10 @@
+
 <%= form_with(model: Subscription.new, html: 
 { class: "O_SubscriptionForm" }) do |form| %>
-  <p class="form-notice"><%= notice %></p> <!-- Класс для уведомления -->
+  <p class="form-notice"><%= notice %></p> 
   
-  <div class="form-group">
-    
-    <%= form.email_field :email, 
-    placeholder: "Введите ваш email", class: "A_FormInput" %> <!-- Класс для поля ввода -->
+  <div class="O_SubscriptionForm">
+    <%= form.email_field :email, placeholder: "Введите ваш email", class: "A_FormInput" %> <!-- Класс для поля ввода -->
   </div>
 
   <div class="form-group">

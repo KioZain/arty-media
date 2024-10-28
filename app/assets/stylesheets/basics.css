@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "InterTight";
   background: var(--warm-grey);
 
   h1 {
@@ -23,6 +23,7 @@ body {
 .Content {
   width: 1285px;
   margin: 0 auto;
+  margin-top: 4rem;
 }
 
 .S_Posts {
@@ -73,6 +74,7 @@ body {
   width: fit-content;
   margin-bottom: 1rem;
   border-radius: 8px;
+  height: fit-content;
 
   a {
     color: white;
@@ -118,4 +120,33 @@ body {
     padding: 4px 8px;
     border-radius: 4px;
   }
+}
+
+.W_NavigationCreatePost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.M_NavigationLinksPosts {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  a {
+    font-size: 3rem;
+    font-family: "Kommuna";
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--almost-black);
+    border-right: 2px solid var(--almost-black);
+    padding-right: 1rem;
+
+    &:nth-child(2) {
+      border: none;
+    }
+  }
+}
+.active-link {
+  text-decoration: underline;
+  font-weight: bold;
 }

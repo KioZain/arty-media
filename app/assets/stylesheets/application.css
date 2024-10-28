@@ -4,6 +4,7 @@
  *= require fonts
  *= require home
  *= require about
+ *= require formContainer
  *= require basics
  *= require_tree ./components
  */

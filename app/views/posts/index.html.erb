@@ -2,12 +2,19 @@
 
 <div class="Content">
   <p style="color: green"><%= notice %></p>
-  <h1>Посты</h1>
-<%# Admin check %>
-  <% if current_user && current_user.admin?%>
-    <div class="A_Button"><%= link_to " + Создать пост", new_admin_post_path %></div>
-  <% end %>
 
+<div class="W_NavigationCreatePost">
+    <div class="M_NavigationLinksPosts">
+      <%= link_to "Посты", posts_path, class: ("active-link" if current_page?(posts_path)) %>
+      <%= link_to "Коллекции", collections_path, class: ("active-link" if current_page?(collections_path)) %>
+    </div>
+
+
+  <%# Admin check %>
+    <% if current_user && current_user.admin?%>
+      <div class="A_Button"><%= link_to " + Создать пост", new_admin_post_path %></div>
+    <% end %>
+</div>
   <div id="posts"  class="S_Posts">
     <% @posts.each do |post| %>
       <div class="O_Post">

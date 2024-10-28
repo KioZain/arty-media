@@ -1,16 +1,14 @@
 .S_Header {
-  a {
-    text-decoration: none;
-    color: var(--cream-white);
-  }
-
   background: var(--almost-black);
-  /* height: 120px;s */
   margin: 0 auto;
   width: 100%;
   padding: 3rem 5rem;
   display: flex;
   justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: var(--cream-white);
+  }
 
   .M_LinksInner {
     display: flex;
