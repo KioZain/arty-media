@@ -1,7 +1,8 @@
 /*
- * require reset
+ *= require reset
  *= require vars
  *= require fonts
+ *= require about
  *= require basics
  *= require_tree ./components
  */

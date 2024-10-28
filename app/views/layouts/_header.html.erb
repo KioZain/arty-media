@@ -1,18 +1,18 @@
 <header class="S_Header">
+  
   <nav class="C_Links">
-    <%= link_to "Главная", root_path %>
-    <%= link_to "О медиа", about_path %>
+    
+    <div class="M_LinksAbout">
+      <%= link_to "Главная", root_path %>
+      <%= link_to "О медиа", about_path %>
+    </div>
     <%# Admin link %>
-
-    <%# <% if user_signed_in? && current_user.admin? %>
+  <% if user_signed_in? %>
+    <div class="M_LinksInner">    
       <%= link_to "Работы", posts_url %>
       <%= link_to "Коллекции", collections_path %>
-
-
-    <%# User links %>
-      <%# <%= link_to "Главная", root_path %>
-      <%# <%= link_to "О медиа", about_path %>
-      
+    </div>
+  <% end %>
   </nav>
   <nav class="C_Links">
     <% if user_signed_in? %>
@@ -21,9 +21,8 @@
       <%= link_to "Выйти", destroy_user_session_path, data: { "turbo-method": :delete } %>
     
     <% else %>
-
       <%= link_to "Войти", new_user_session_path %>
-      <%= link_to "Регистрация", new_user_registration_path %>
+      <%# <%= link_to "Регистрация", new_user_registration_path %>
     <% end %>
 
     </nav>

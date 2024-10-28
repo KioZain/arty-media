@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :subscriptions, only: [ :create ]
+
   get "static_pages/home"
   get "/about", to: "static_pages#about"
 
