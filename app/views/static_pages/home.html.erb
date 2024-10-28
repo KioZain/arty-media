@@ -1,8 +1,76 @@
 
-<div class="Content"><h1>Это главная</h1>
-<p>Тут пока пусто, но через модуль тут уже что-то будет!</p>
+<div class="S_FirstScreenHome">
+    <div class="O_ScreenGrid">
+        <div class="A_Salutations">
+            <h1>Привет, это</h1>
+        </div>
+        <div class="A_NameLogo">
+            <h1>(artovoe)</h1>
+        </div>
+        <h1 class="A_Heading">Мы — медиа про работы <br> локальных художников</h1>
+        <p class="A_Description">Показывайте у&nbsp;нас свои прикольные работы и&nbsp;находи новые арт-вещицы, не&nbsp;тратя кучу времени на&nbsp;ресерч.</p>
+    </div>
+<img src="/assets/home/dudes.png" alt="">
 </div>
-<div id="subscriptionForm">
-    <%= render 'subscriptions/form' %>
+
+<img class="BottomThing" src="/assets/home/bottom_thing.png" alt="">
+
+<div class="S_SecondScreen">
+    <div class="O_ScreenGrid">
+        <h1 class="A_Heading">Собирайте работы <br> в одном месте</h1>
+        <p class="A_Description">Мы&nbsp;верим, что за&nbsp;каждым творением стоит уникальная история, которая заслуживает быть услышанной. </p>
+        <p class="A_Description">Следите за&nbsp;другими художниками, чтобы легко находить для себя самые аутентичные арт-объекты.</p>
+        <div class="O_ImagesGrid">
+            <img src="/assets/home/grid_image 1" alt="">
+            <img src="/assets/home/grid_image 2" alt="">
+            <img src="/assets/home/grid_image 3" alt="">
+            <img src="/assets/home/grid_image 4" alt="">
+            <p> Это Катя Мороз <br>и ее работа Eyes </p>
+        </div>
+        <%# <img class="Q_ThingsArt" src="/assets/home/thigs_art.png" alt=""> %>
+    </div>
+
 </div>
+
+<div class="S_ThridScreen">
+    <img class="Q_PerspectiveImages" src="/assets/home/perspective1.png" alt="">
+    <img class="Q_PerspectiveImages" src="/assets/home/perspective2.png" alt="">
+    
+    <div class="O_LoadingArrows">
+        <img class="LoadingArrows" src="/assets/home/posting_thing.png" alt="">
+    </div>
+</div>
+<div class="S_FourthScreen">
+    <div class="O_ScreenGrid">
+        <h1 class="A_Heading">Уже на главной</h1>
+        <p class="A_Description">Мы&nbsp;верим, что за&nbsp;каждым творением стоит уникальная история, которая заслуживает быть услышанной. </p>
+        <img src="/assets/home/collections_things.png" alt="">
+    </div>
+</div>
+
+<div class="S_FifthScreen">
+    <h1 class="A_Heading">Покажите себя миру</h1>
+    <p class="A_Description">Подпишетесь на рассылку и будете в курсе <br>всех крутых апдейтов</p>
+
+    <div id="subscriptionForm">
+        <%= render 'subscriptions/form' %>
+    </div>
+</div>
+
+
+
+<footer class="O_AboutCredits">
+    <div class="A_Logo"><h1>(artovoe)</h1></div>
+    <div class="A_HseDate">
+        <div class="Q_HseADC">
+            <p><img src="/assets/about/ADC_face.png" alt="">HSE ADC</p>
+            <p>2024-2025</p>
+        </div>
+    </div>
+    <div class="C_Credits">
+        <div class="W_Authors"><p><span>Авторы:</span><br>Ева Киприанова<br>Максим Кириллов<br>Злата Баева</p></div>
+        <div class="Curators"><p><span>Кураторы:</span><br>Захар День<br>Вадим Булгаков</p></div>
+    </div>
+</footer>
+
 

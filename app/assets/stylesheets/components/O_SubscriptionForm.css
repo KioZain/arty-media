@@ -1,0 +1,32 @@
+.O_SubscriptionForm {
+  display: flex;
+  gap: 1rem;
+
+  width: 100%;
+
+  .A_FormInput {
+    width: 20rem;
+    height: 3rem;
+    font-size: 1rem;
+    font-family: "InterTight";
+    padding: 1rem;
+  }
+
+  .A_FormSubmit {
+    width: 10rem;
+    height: 3rem;
+    font-family: "Kommuna";
+    font-size: 2rem;
+    color: var(--cream-white);
+    border-radius: 4px;
+    background-color: #495054;
+    border: none;
+  }
+}
+p.Success {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  text-align: center;
+  color: var(--moon-yellow);
+  font-size: 1.5rem;
+}

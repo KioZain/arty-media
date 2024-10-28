@@ -7,20 +7,21 @@
 
   .A_MeatingText {
     color: var(--moon-yellow);
-    margin-top: 2rem;
+    margin-top: 3em;
 
     h1 {
       color: var(--moon-yellow);
-      font-size: 132px;
+      font-size: 7rem;
       text-align: center;
     }
   }
   img {
     position: absolute;
     left: 0vw;
-    height: 50vw;
-    top: -6vw;
+    /* height: 50vw; */
+    top: -1vw;
     width: 100%;
+    /* background-color: coral; */
   }
 }
 
@@ -41,6 +42,13 @@
   p {
     text-indent: 2rem;
     line-height: 140%;
+  }
+}
+.A_NumberPage,
+.A_PageName {
+  p {
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 /* Second Screen */
@@ -66,7 +74,6 @@
     }
     .A_NumberPage {
       grid-column: 4/4;
-      font-size: 20px;
 
       p {
         text-align: right;
@@ -247,6 +254,7 @@
 .S_FourthScreenFunctions {
   padding: 0 5rem;
   position: relative;
+  height: 100vh;
 
   .Q_Arrows {
     height: 15rem;
@@ -267,57 +275,170 @@
       margin-left: auto;
     }
   }
-}
-.S_Options {
-  position: relative;
 
-  .M_Option {
-    display: flex;
-    gap: 1rem;
+  .S_Options {
     position: relative;
-    margin: 0 auto;
-    width: 390px;
 
-    img {
-      position: absolute;
-      height: 7rem;
-      top: -7vw;
-      left: 16vw;
-    }
-
-    .A_Bullet {
-      background-image: url("/assets/about/yellow_bullet.png");
-      background-size: cover;
-      height: 3.5rem;
-      width: 3.5rem;
+    .M_Option {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      margin: 0 auto;
+      width: 390px;
 
-      .AccentNumber {
-        color: transparent;
-        -webkit-text-stroke: 1px var(--almost-black);
+      img {
+        position: absolute;
+        height: 7rem;
+        top: -7vw;
+        left: 16vw;
+      }
+
+      .A_Bullet {
+        background-image: url("/assets/about/yellow_bullet.png");
+        background-size: cover;
+        height: 3.5rem;
+        width: 3.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .AccentNumber {
+          color: transparent;
+          -webkit-text-stroke: 1px var(--almost-black);
+        }
+      }
+
+      .A_OptionText {
+        background-color: var(--cream-white);
+        height: fit-content;
+        width: 320px;
+        padding: 1rem 1.5rem;
+        border-radius: 4px;
+        p {
+          font-size: 1.125rem;
+          text-align: center;
+        }
+      }
+    }
+    .W_Options {
+      display: flex;
+      width: fit-content;
+      margin: 0 auto;
+      gap: 2rem;
+      align-items: flex-end;
+      margin-bottom: 6rem;
+    }
+  }
+}
+/* Final Screen */
+.S_FifthScreenFinal {
+  .TopThing {
+    width: 100%;
+    margin-bottom: -1rem;
+  }
+  .O_BgQr {
+    background-color: var(--almost-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0rem;
+    position: relative;
+
+    .ThingBg {
+      position: absolute;
+      top: -12vw;
+      left: -2vw;
+      height: 58vw;
+
+      &:nth-child(3) {
+        right: 0vw;
+        left: auto;
+        top: -15vw;
+        height: 61vw;
       }
     }
 
-    .A_OptionText {
-      background-color: var(--cream-white);
-      height: fit-content;
-      width: 320px;
-      padding: 1rem 1.5rem;
-      border-radius: 4px;
-      p {
-        font-size: 1.125rem;
-        text-align: center;
+    .W_QrCode {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      gap: 1rem;
+
+      .M_QrTitle {
+        h1 {
+          font-size: 4.5rem;
+          color: var(--moon-yellow);
+          text-align: center;
+        }
+
+        h3 {
+          text-align: center;
+          color: var(--moon-yellow);
+        }
+      }
+
+      .M_QrImage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        img {
+          height: 7rem;
+        }
+
+        p {
+          text-align: center;
+          color: var(--moon-yellow);
+        }
       }
     }
   }
-  .W_Options {
+
+  footer.O_AboutCredits {
+    background-color: var(--almost-black);
     display: flex;
-    width: fit-content;
-    margin: 0 auto;
-    gap: 2rem;
+    justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 6rem;
+    padding: 3rem 7rem;
+
+    .A_Logo {
+      h1 {
+        font-size: 4.5rem;
+        color: var(--cream-white);
+      }
+    }
+    .A_HseDate {
+      p {
+        color: var(--cream-white);
+        display: inline-block;
+        margin-right: 1rem;
+        vertical-align: middle;
+
+        img {
+          vertical-align: middle;
+          width: 20px;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+    .C_Credits {
+      display: flex;
+      gap: 2rem;
+
+      .W_Authors,
+      .Curators {
+        color: var(--cream-white);
+        p {
+          span {
+            font-size: 0.8rem;
+            font-style: oblique;
+          }
+        }
+      }
+    }
   }
 }

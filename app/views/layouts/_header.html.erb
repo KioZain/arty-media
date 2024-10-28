@@ -7,13 +7,13 @@
       <%= link_to "О медиа", about_path %>
     </div>
     <%# Admin link %>
-  <% if user_signed_in? %>
+  </nav>
+    <% if user_signed_in? %>
     <div class="M_LinksInner">    
       <%= link_to "Работы", posts_url %>
       <%= link_to "Коллекции", collections_path %>
     </div>
   <% end %>
-  </nav>
   <nav class="C_Links">
     <% if user_signed_in? %>
     

@@ -1,12 +1,14 @@
-
-<%= form_with(model: Subscription.build) do |form| %>
-  <p style="color: green"><%= notice %></p>
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email %>
+<%= form_with(model: Subscription.new, html: 
+{ class: "O_SubscriptionForm" }) do |form| %>
+  <p class="form-notice"><%= notice %></p> <!-- Класс для уведомления -->
+  
+  <div class="form-group">
+    
+    <%= form.email_field :email, 
+    placeholder: "Введите ваш email", class: "A_FormInput" %> <!-- Класс для поля ввода -->
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Отправить", class: "A_FormSubmit" %> <!-- Класс для кнопки отправки -->
   </div>
 <% end %>
