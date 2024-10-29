@@ -7,7 +7,9 @@
 
   .A_MeatingText {
     color: var(--moon-yellow);
-    margin-top: 3em;
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: fit-content;
 
     h1 {
       color: var(--moon-yellow);

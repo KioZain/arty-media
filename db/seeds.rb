@@ -148,14 +148,17 @@ end
 def create_comments(quantity)
   Post.all.each do |post|
     quantity.to_a.sample.times do
-    comment = Comment.create(
-      post_id: post.id,
-      body: create_sentence,
+      user = User.all.sample
+      comment = Comment.create(
+        post_id: post.id,
+        user_id: user.id,
+        body: create_sentence
       )
-      # puts "Comment with id #{comment.id} for post with id #{comment.post.id} just created"
+      puts "Comment with id #{comment.id} for post with id #{comment.post.id} created by user #{user.email}"
     end
   end
 end
+
 
 # Creating collections
 def create_collections(quantity)
@@ -163,7 +166,7 @@ def create_collections(quantity)
     user = User.all.sample
     public_status = get_random_bool
 
-    # Создаем новую коллекцию
+    # New Collection
     collection = Collection.new(
       user: user,
       title: create_post_name,
@@ -171,7 +174,7 @@ def create_collections(quantity)
       public: public_status
     )
 
-    # Пытаемся добавить посты в коллекцию
+    # Adding posts to collection
     if add_posts_to_collection(collection)
       if collection.save
         puts "Collection '#{collection.title}' with id #{collection.id} created"
@@ -195,7 +198,7 @@ def add_posts_to_collection(collection)
     return false
   end
 
-  # Добавляем посты в коллекцию
+  # Adding again
   posts_to_add.each do |post|
     collection.posts << post unless collection.posts.include?(post)
     puts "Post with id #{post.id} added to Collection '#{collection.title}'"

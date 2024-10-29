@@ -8,11 +8,16 @@ class Ability
 
     can :read, Post, public: true
     can :read, Collection, public: true
+    can :read, Comment, public: true
 
   # For authorized users
   return unless user.present?
     can :manage, Post, user: user
     can :manage, Collection, user: user
+
+    can :create, Comment
+    can :update, Comment, user_id: user
+    can :destroy, Comment, user_id: user
 
     return unless user.admin?
     can :manage, :all

@@ -1,14 +1,9 @@
 class Admin::CommentsController < ApplicationController
-  def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(params[:comment].permit(:body))
-    redirect_to admin_post_path(@post)
-  end
+    load_and_authorize_resource
+    before_action :set_post
+    before_action :set_post, only: %i[ edit destroy ]
 
-  def destroy
-      @post = Post.find(params[:post_id])
-      @comment = @post.comments.find(params[:id])
-      @comment.destroy
-      redirect_to admin_post_path(@post)
-  end
+    def index
+      @comments = @post.comments
+     end
 end

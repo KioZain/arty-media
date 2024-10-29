@@ -10,36 +10,44 @@
 
 
     <div class="M_Options">
-
-    <% if can?(:manage, @post) %>
-      <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
-      <%= button_to "Destroy this post", admin_post_path(@post), method: :delete %>
-    <% else %>
-      <p>You do not have permission to edit this post.</p>
-    <% end %>
-
+      <div class="M_ActionButton">
+        <% if can?(:manage, @post) %>
+          <%= link_to "Изменить", edit_admin_post_path(@post), class: 'A_Edit' %>
+          <%= button_to "⌦Удалить пост", admin_post_path(@post), method: :delete %>
+        <% else %>
+          <p>Авторизируйтесь, чтобы редактировать</p>
+        <% end %>
+      </div>
     </div>
 
   </div>
-<div class="W_Post" style="display:flex">
-  <div class="S_Post">
-    <%= render @post %>
+  <div class="W_Post">
+    <div class="S_Post">
 
-    <p>
-      <strong>Автор:</strong>
-      <%= @post.author %>
-    </p>
+
+        <h1 class="A_PostTitle"><%= @post.title %></h1>
+        <div class="M_PostCreators">
+          <h3>Выложил <%= @post.user.email %> </h3>
+          <h3>Автор:<%= @post.author %></h3>
+        </div>
+
+        <p><%= @post.body%></p>
+        <%= image_tag @post.post_image.url if @post.post_image.present? %>
+
+    </div>
+    
+    <div class="S_Comments">
+      <h1>Комментарии</h1>
+      <div class="C_Comments" >
+        <% @post.comments.each do |comment| %>
+          <%= render comment %>
+        <% end %>
+
+        <%# ФОРМА %>
+        <div class="SendComment">
+          <%= render "comments/form" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="S_Comments">
-  <h2>Добавить коммент</h2>
-    <%= render "admin/comments/form" %>
-
-    <h2>Комменты</h2>
-
-    <% @post.comments.each do |comment| %>
-     <%= render 'admin/comments/comment', comment: comment %>
-
-    <% end %>
-  </div>
-</div>
 </div>

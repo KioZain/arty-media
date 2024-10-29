@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  resources :posts, only: [ :index, :show ]
+  resources :posts, only: [ :index, :show ] do
+    resources :comments
+  end
   resources :collections, only: [ :index, :show ]
 
   namespace :admin do

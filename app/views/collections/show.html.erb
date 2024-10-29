@@ -5,20 +5,21 @@
     <%= link_to "<- В коллекции", collections_path %>
 
 
-    <% if current_user && current_user.admin?%>
-      <%= link_to 'Edit Collection', edit_admin_collection_path(@collection), class: 'btn btn-primary' %>
-      <%= button_to "Destroy this collection", admin_collection_path(@collection), method: :delete %>
+  <div class="M_ActionButton">
+     <% if can?(:manage, @collection) %>
+      <%= link_to 'Изменить', edit_admin_collection_path(@collection), class: 'A_Edit' %>
+      <%= button_to "⌦Удалить коллекцию", admin_collection_path(@collection), method: :delete %>
+        <% else %>
+          <p>Авторизируйтесь, чтобы редактировать</p>
     <% end %>
-
+  </div>
 
   </div>
-<div class="O_Collection">
-  <h1><%= @collection.title %></h1>
-  <p><%= @collection.body %></p>
+<div class="O_CollectionDescription">
+  <h1 class="A_CollectionHeading"><%= @collection.title %></h1>
+  <p class="A_CollectionDescription"><%= @collection.body %></p>
+  <h3 class="A_ObjectsInside">Объектов <br>в коллекции [<%= @collection.posts.count %>]</h1>
 </div>
-
-  <h1>Крутые штуки:</h1>
-
   <div class="S_Posts">
     <% @collection.posts.each do |post| %>
       <%= render 'posts/post', post: post %>

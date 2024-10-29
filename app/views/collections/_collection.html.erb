@@ -4,17 +4,20 @@
     <% collection_posts = collection.posts.limit(4) %>
     <% if collection_posts.size >= 2 %>
       <% collection_posts.each do |post| %>
-        <%= image_tag post.post_image.url %>
+        <div><%= image_tag post.post_image.url %></div>
       <% end %>
     <% end %>
   </div>
   
-  <div class="M_CollectionDescription">
     <h1><%= collection.title %></h1>
-     <p>Вещиц внутри: <%= collection.posts.count %></p>
+  <div class="M_CollectionDescription">
+    <% user_email = collection.posts.first&.user&.email %>
+      <% if user_email %>
+        <p class="A_CreatedBy">Создано: <%= user_email %></p>
+      <% end %>
+      
+     <p class="A_ThingsCount">Вещиц внутри: <%= collection.posts.count %></p>
+
+
   </div>
-   <% user_email = collection.posts.first&.user&.email %>
-    <% if user_email %>
-      <p>Создано: <%= user_email %></p>
-    <% end %>
 <% end %>

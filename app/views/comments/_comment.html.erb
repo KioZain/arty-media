@@ -1,0 +1,7 @@
+<div class="A_Comment">
+    <p class="A_Mail"><%= comment.user.email %></p>
+    <p class="A_CommentBody"><%= comment.body %></p>
+<% if current_user && current_user.admin?%>
+    <%= link_to "Удалить комментарий", [comment.post, comment], data: { turbo_stream: false, turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<% end%>
+</div>

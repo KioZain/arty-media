@@ -1,7 +1,7 @@
 .O_Post {
   background: var(--cream-white);
   width: 407px;
-  height: 680px;
+  height: fit-content;
   border-radius: 4px;
   overflow: hidden;
   text-decoration: none;
@@ -9,22 +9,33 @@
   flex-direction: column;
   color: var(--almost-black);
 
-  h1 {
-    height: 70px;
-    margin: 0;
-    display: inline-block;
+  .Clip {
+    overflow: hidden;
+    height: 400px;
+    width: 100%;
   }
-
-  h3 {
-    margin: 0;
+  .W_UserAuthor {
+    height: 100%;
     margin-top: 1rem;
-    min-height: 130px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h1 {
+      height: 70px;
+      display: inline-block;
+    }
+
+    h3 {
+      display: inline-block;
+    }
   }
 
   img {
-    width: object-fit;
-    height: 400px;
+    height: 25rem;
+    width: 101%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Плавная анимация */
   }
 
   a {
@@ -40,5 +51,9 @@
       display: flex;
       flex-direction: column;
     }
+  }
+
+  &:hover img {
+    transform: scale(1.1); /* Увеличение при наведении */
   }
 }
