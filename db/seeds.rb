@@ -68,9 +68,9 @@ end
 def seed
   reset_db
   create_users(10)
-  create_posts(72)
+  create_posts(64)
   create_comments(2..6)
-  create_collections(24)
+  create_collections(12)
 end
 
 def create_users(quantity)
@@ -163,38 +163,47 @@ def create_collections(quantity)
     user = User.all.sample
     public_status = get_random_bool
 
-    collection = Collection.create(
+    # Создаем новую коллекцию
+    collection = Collection.new(
       user: user,
       title: create_post_name,
       body: create_sentence,
       public: public_status
-
     )
-    add_posts_to_collection(collection)
-    puts "Collection '#{collection.title}' with id #{collection.id} created"
+
+    # Пытаемся добавить посты в коллекцию
+    if add_posts_to_collection(collection)
+      if collection.save
+        puts "Collection '#{collection.title}' with id #{collection.id} created"
+      else
+        puts "Failed to create Collection: #{collection.errors.full_messages.join(", ")}"
+      end
+    else
+      puts "Not enough posts"
+    end
   end
 end
 
 # Linking posts to collection---------------------
 def add_posts_to_collection(collection)
-  # Получаем посты, принадлежащие пользователю, создавшему коллекцию
   user_posts = Post.where(user: collection.user)
-
-  # Проверяем, есть ли у пользователя хотя бы 2 поста для добавления
-  return if user_posts.empty? || user_posts.count < 2
-
-  # Задаём количество постов для добавления, учитывая максимум в 8 постов
+  return false if user_posts.empty? || user_posts.count < 2
   post_count = rand(2..[ user_posts.count, 8 ].min)
-
-  # Выбираем случайные посты из списка постов пользователя
   posts_to_add = user_posts.sample(post_count)
+
+  if posts_to_add.count < 2
+    return false
+  end
 
   # Добавляем посты в коллекцию
   posts_to_add.each do |post|
     collection.posts << post unless collection.posts.include?(post)
     puts "Post with id #{post.id} added to Collection '#{collection.title}'"
   end
+
+  true
 end
+
 
 
 seed

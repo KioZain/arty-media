@@ -11,10 +11,12 @@
 
     <div class="M_Options">
 
-      <% if can? :manage, @post%>
-        <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
-        <%= button_to "Destroy this post", admin_post_path(@post), method: :delete %>
-      <% end %>
+    <% if can?(:manage, @post) %>
+      <%= link_to "Edit this post", edit_admin_post_path(@post) %> |
+      <%= button_to "Destroy this post", admin_post_path(@post), method: :delete %>
+    <% else %>
+      <p>You do not have permission to edit this post.</p>
+    <% end %>
 
     </div>
 

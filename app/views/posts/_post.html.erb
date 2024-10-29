@@ -1,10 +1,12 @@
-<div class="O_Post" id="<%= dom_id post %>" style="">
-
-    <%= image_tag post.post_image.url %>
+<%= link_to post_path(post), class: "O_Post", id: dom_id(post) do %>
+  <%= image_tag post.post_image.url %>
 
   <div class="M_PostDescription">
     <h1><%= post.title %></h1>
-    <h3><%= post.user.email %></h3>
+    <div class="W_UserAuthor">
+        <h3><%= post.user.email %></h3>
+
+      <h3>Автор: <%= post.author %></h3>
+    </div>
   </div>
-      <%= link_to "Посмотреть вещицу", post_path(post) %>
-</div>
+<% end %>
