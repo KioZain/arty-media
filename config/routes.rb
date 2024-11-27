@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get "artists/index"
   devise_for :users
 
+  resources :artists, only: [ :index, :show ]
 
   resources :posts, only: [ :index, :show ] do
     resources :comments
   end
+
   resources :collections, only: [ :index, :show ]
 
   resources :subscriptions, only: [ :create ]

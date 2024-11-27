@@ -11,7 +11,9 @@ class Post < ApplicationRecord
 
   def as_json
     {
-      title: title
+      title: title,
+      body: body,
+      auuthor: author
 
     }
   end
