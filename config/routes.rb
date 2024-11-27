@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
   resources :collections, only: [ :index, :show ]
 
+  resources :subscriptions, only: [ :create ]
+
+  # Admin namespace
   namespace :admin do
     resources :collections, except: [ :index, :show ]
     resources :posts, except: [ :index, :show ] do
@@ -14,9 +17,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :subscriptions, only: [ :create ]
+  # API v1
+  namespace :api, format: "json" do
+    namespace :v1 do
+      resources :posts, only: [ :index ]
+    end
+  end
 
   get "static_pages/home"
+  get "static_pages/output"
   get "/about", to: "static_pages#about"
 
   get "up" => "rails/health#show", as: :rails_health_check

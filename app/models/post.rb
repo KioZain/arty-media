@@ -8,4 +8,11 @@ class Post < ApplicationRecord
 
   # ImagesUploader----------------------------
   mount_uploader :post_image, PostImageUploader
+
+  def as_json
+    {
+      title: title
+
+    }
+  end
 end
