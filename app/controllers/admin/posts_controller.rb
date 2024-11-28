@@ -5,9 +5,10 @@ class Admin::PostsController < ApplicationController
   def new
   end
 
+
   # GET /posts/1/edit
   def edit
-    @collection = Collection.find(params[:id])
+    @post = Post.find(params[:id])
     @posts = Post.all
   end
 
@@ -50,6 +51,9 @@ class Admin::PostsController < ApplicationController
     end
   end
 
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -58,6 +62,6 @@ class Admin::PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :author, :post_image)
+      params.require(:post).permit(:title, :body, :author, :post_image, :tag_list)
     end
 end

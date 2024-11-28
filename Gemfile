@@ -24,6 +24,9 @@ gem "devise"
 
 # CanCanCan
 gem "cancancan"
+
+# Tags
+gem "acts-as-taggable-on"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

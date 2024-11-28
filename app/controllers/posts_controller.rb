@@ -11,6 +11,12 @@ class PostsController < ApplicationController
     end
   end
 
+
+  def by_tag
+    @posts = Post.tagged_with(params[:tags])
+    render :index
+  end
+
   def show
     @post = Post.find(params[:id])
   end

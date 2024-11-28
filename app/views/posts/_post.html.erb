@@ -4,12 +4,14 @@
   </div>
   <div class="M_PostDescription">
     <h1><%= post.title %></h1>
+    <p class="C_Tags">
+      <% post.tags.each do |tag| %>
+        <%= link_to tag.name, tagged_posts_path(tag.name) %>
+      <% end %>
+    </p>
     <div class="W_UserAuthor">
-      
       <h3 class="A_Email"><%= post.user.email %></h3>
-
       <h3 class="A_Author">Автор: <%= post.author %></h3>
-
     </div>
   </div>
 <% end %>

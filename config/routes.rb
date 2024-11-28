@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :profiles
   get "artists/index"
   devise_for :users
 
-  resources :artists, only: [ :index, :show ]
 
   resources :posts, only: [ :index, :show ] do
     resources :comments
+    get "/by_tag/:tag", to: "posts#by_tag", on: :collection, as: "tagged"
   end
 
   resources :collections, only: [ :index, :show ]

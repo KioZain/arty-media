@@ -1,27 +1,28 @@
 <% content_for :title, "Posts" %>
-
 <div class="Content">
   <p style="color: green"><%= notice %></p>
-
-<div class="W_NavigationCreatePost">
+  <div class="W_NavigationCreatePost">
     <div class="M_NavigationLinksPosts">
       <%= link_to "Посты", posts_path, class: ("active-link" if current_page?(posts_path)) %>
       <%= link_to "Коллекции", collections_path, class: ("active-link" if current_page?(collections_path)) %>
     </div>
-
-
-  <%# Admin check %>
+    <%# Admin check %>
     <% if current_user && current_user.admin?%>
       <div class="A_Button"><%= link_to " + Создать пост", new_admin_post_path %></div>
     <% end %>
-</div>
+  </div>
+  <p class="C_Tags">
+    <%= link_to "Все посты", posts_path %>
+    <% Post.tag_counts_on(:tags) do |tag| %>
+      <%= link_to tag.name, tagged_posts_path(tag.name) %>
+    <% end %>
+  </p>
   <div id="posts"  class="S_Posts">
     <% @posts.each do |post| %>
       <div class="O_Post">
-      <%= render 'posts/post', post: post %>
+        <%= render 'posts/post', post: post %>
       </div>
     <% end %>
-    
   </div>
 </div>
 <%# <%= render plain: 'OK' %> 
