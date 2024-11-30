@@ -25,6 +25,9 @@ gem "devise"
 # CanCanCan
 gem "cancancan"
 
+# CORS and fetch
+gem "rack-cors"
+
 # Tags
 gem "acts-as-taggable-on"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

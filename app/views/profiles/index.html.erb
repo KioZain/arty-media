@@ -1,16 +1,18 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Profiles" %>
-
-<h1>Profiles</h1>
-
-<div id="profiles">
+<h1>Все профили</h1>
+<div class="profiles-list">
   <% @profiles.each do |profile| %>
-    <%= render profile %>
-    <p>
-      <%= link_to "Show this profile", profile %>
-    </p>
+    <div class="profile-card">
+      <h2><%= profile.name.presence || "Имя не указано" %></h2>
+      <p><strong>Email:</strong> <%= profile.user.email %></p>
+      <p><strong>Биография:</strong> <%= profile.bio.presence || "Нет биографии" %></p>
+      <p><strong>Расположение:</strong> <%= profile.placed.presence || "Не указано" %></p>
+      <% if profile.avatar.present? %>
+        <img src="<%= profile.avatar %>" alt="<%= profile.name %>" class="profile-avatar">
+      <% else %>
+        <p>Нет аватара</p>
+      <% end %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New profile", new_profile_path %>

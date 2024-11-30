@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_28_140259) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_30_152308) do
   create_table "collections", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_28_140259) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "placed"
   end
 
   create_table "subscriptions", force: :cascade do |t|

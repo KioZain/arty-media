@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
 
   def by_tag
-    @posts = Post.tagged_with(params[:tags])
+    @posts = Post.tagged_with(params[:tag])
     render :index
   end
 

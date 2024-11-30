@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :collections, only: [ :index, :show ]
-
   resources :subscriptions, only: [ :create ]
 
   # Admin namespace
@@ -24,7 +23,7 @@ Rails.application.routes.draw do
   # API v1
   namespace :api, format: "json" do
     namespace :v1 do
-      resources :posts, only: [ :index ]
+      resources :posts, only: [ :index, :show ]
     end
   end
 

@@ -11,12 +11,12 @@
       <div class="A_Button"><%= link_to " + Создать пост", new_admin_post_path %></div>
     <% end %>
   </div>
-  <p class="C_Tags">
+  <div class="C_Tags">
     <%= link_to "Все посты", posts_path %>
-    <% Post.tag_counts_on(:tags) do |tag| %>
+    <% Post.tag_counts_on(:tags).each do |tag| %>
       <%= link_to tag.name, tagged_posts_path(tag.name) %>
     <% end %>
-  </p>
+  </div>
   <div id="posts"  class="S_Posts">
     <% @posts.each do |post| %>
       <div class="O_Post">
@@ -25,4 +25,3 @@
     <% end %>
   </div>
 </div>
-<%# <%= render plain: 'OK' %> 

@@ -54,7 +54,7 @@
     "bio": "A senior at the China International Art University, Xhou has become well-known for his miniature sculptures, often the size of a rice granule, that are displayed by rear projection of microscope images on canvas. Xhou will discuss the art and science behind his incredibly detailed works of art."
   }
 ]
-
+@tags = [ "art", "design", "inspiration", "nature", "landscape", "photography", "abstract", "painting", "modern" ]
 
 # Rake-----------------------------------------
 def reset_db
@@ -74,6 +74,19 @@ def seed
 end
 
 def create_users(quantity)
+  names = [ "Александр", "Мария", "Иван", "Екатерина", "Дмитрий", "Ольга" ]
+  bios = [
+    "Люблю искусство и литературу",
+    "Профессиональный художник с 5-летним опытом",
+    "Увлекаюсь фотографией и современным искусством",
+    "Работаю дизайнером и создаю уникальные проекты",
+    "Исследователь локального искусства",
+    "Куратор выставок и арт-мероприятий"
+  ]
+
+  cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
+
+
   i = 0
 
   quantity.times do
@@ -87,6 +100,16 @@ def create_users(quantity)
     end
     user = User.create!(user_data)
     puts "User created with id #{user.id}"
+
+     profile_data = {
+      name: names.sample,
+      bio: bios.sample,
+      placed: cities.sample
+    }
+
+    # Создание профиля для пользователя
+    user.create_profile!(profile_data)
+    puts "Profile created for user with id #{user.id}: #{profile_data[:name]}"
 
     i += 1
   end
@@ -119,7 +142,6 @@ def create_sentence
   sentence = sentence_words.join(' ').capitalize + '.'
 end
 
-
 # Image creating ----------------------------------------
 def upload_random_image
   uploader = PostImageUploader.new(Post.new, :post_image)
@@ -140,6 +162,8 @@ def create_posts(quantity)
       public: get_random_bool,
       user: user
     )
+    post.tag_list = @tags.sample(rand(2..3))
+
     puts "Post with id #{post.id} and user id:#{user.id} just created"
   end
 end

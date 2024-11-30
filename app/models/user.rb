@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :posts
   has_many :collections
   has_many :comments
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   after_create :create_user_profile
 
   private
 
     def create_user_profile
-      self.create_profile
+      self.create_profile! unless self.profile.present?
     end
 end
