@@ -8,6 +8,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    @user = @profile.user
+    @posts = @user.posts
+    @collections = @user.collections
   end
 
   # GET /profiles/new
@@ -65,6 +68,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:name, :bio, :avatar)
+      params.require(:profile).permit(:name, :bio, :avatar, :placed)
     end
 end

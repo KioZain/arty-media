@@ -1,10 +1,34 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @profile %>
-
-<div>
-  <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-  <%= link_to "Back to profiles", profiles_path %>
-
-  <%= button_to "Destroy this profile", @profile, method: :delete %>
+<div class="Contetnt">
+  <p style="color: green"><%= notice %></p>
+  <%= @profile.user_id %>
+  <br>
+  <%= @profile.user.email %>
+  <br>
+  <h1><%= @profile.name %></h1>
+  <br>
+  <h2><%= @profile.bio %></h2>
+  <br>
+  <%= @profile.placed %>
+  <br>
+  <%= image_tag @profile.avatar_url, width: 400 %>
+  <br>
+  <div class="S_Works">
+    <h1>Работы пользователя</h1>
+    <div class="C_Works", style="display: flex; flex-wrap: wrap">
+      <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+      <% end %>
+    </div>
+    <h1>Коллекции</h1>
+    <div class="C_Collections">
+      <% @collections.each do |collection| %>
+        <%= render 'collections/collection', collection: collection %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
+    <%= link_to "Back to profiles", profiles_path %>
+    <%= button_to "Destroy this profile", @profile, method: :delete %>
+  </div>
 </div>

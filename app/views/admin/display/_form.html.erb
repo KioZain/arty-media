@@ -1,0 +1,18 @@
+<div class="display-fields">
+  <div>
+    <%= form.label :name, "Название" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div>
+    <%= form.label :year, "Год" %>
+    <%= form.text_field :year, class: "form-control" %>
+  </div>
+  <div>
+    <%= form.label :display_type, "Тип экспозиции" %>
+    <%= form.select :display_type, ["Выставка", "Арт-маркет", "Галерея", "Цифровая экспозиция"], {}, class: "form-control" %>
+  </div>
+  <div>
+    <%= form.label :link, "Ссылка" %>
+    <%= form.text_field :link, class: "form-control" %>
+  </div>
+</div>

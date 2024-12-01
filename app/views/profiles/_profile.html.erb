@@ -1,17 +1,15 @@
-<div id="<%= dom_id profile %>">
+<%= link_to profile_path(profile),class: "O_Profile", id: dom_id(profile) do %>
   <p>
-    <strong>Name:</strong>
-    <%= profile.name %>
+    <strong>user_id: <%= profile.user_id %></strong>
   </p>
-
   <p>
-    <strong>Bio:</strong>
-    <%= profile.bio %>
+    <strong>Name: <%= profile.name %></strong>
   </p>
-
   <p>
-    <strong>Avatar:</strong>
-    <%= profile.avatar %>
+    <strong>Bio: <%= profile.bio %> </strong>
   </p>
-
-</div>
+  <p>
+    <strong>Placed: <%= profile.placed %></strong>
+  </p>
+  <%= image_tag profile.avatar_url, width: 120 %>
+<% end %>

@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   belongs_to :user
   acts_as_taggable_on :tags
 
+  has_many :displays, dependent: :destroy
+  accepts_nested_attributes_for :displays, allow_destroy: true
+
   # ImagesUploader----------------------------
   mount_uploader :post_image, PostImageUploader
 

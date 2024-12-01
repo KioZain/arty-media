@@ -54,7 +54,22 @@
     "bio": "A senior at the China International Art University, Xhou has become well-known for his miniature sculptures, often the size of a rice granule, that are displayed by rear projection of microscope images on canvas. Xhou will discuss the art and science behind his incredibly detailed works of art."
   }
 ]
-@tags = [ "art", "design", "inspiration", "nature", "landscape", "photography", "abstract", "painting", "modern" ]
+@tags = [ "сюр", "керамика", "онтология", "природа", "скульптура", "картина", "фотография", "цифра", "печтная графика" ]
+
+@names = [ "eve", "Максим", "Злата", "Алексей", "Чхыф", "Олег Пащенко", "somebody", "nobody31", "shoegazer", "волчок" ]
+@bios = [
+    "Люблю искусство и литературу",
+    "Профессиональный художник с 5-летним опытом",
+    "Увлекаюсь фотографией и современным искусством",
+    "Работаю дизайнером и создаю уникальные проекты",
+    "Исследователь локального искусства",
+    "Куратор выставок и арт-мероприятий"
+  ]
+
+@cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
+@price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
+
+
 
 # Rake-----------------------------------------
 def reset_db
@@ -67,26 +82,20 @@ end
 # Setting the quantity of posts and comments --------------------
 def seed
   reset_db
-  create_users(10)
-  create_posts(64)
-  create_comments(2..6)
+  create_users(15)
+  create_posts(44)
+  create_comments(2..4)
   create_collections(12)
 end
 
+
+def upload_random_avatar
+  uploader = AvatarUploader.new(Profile.new, :avatar) # Используем загрузчик для аватаров
+  uploader.cache!(File.open(Dir.glob(File.join(Rails.root, 'public/uploads/avatars', '*')).sample))
+  uploader
+end
+
 def create_users(quantity)
-  names = [ "Александр", "Мария", "Иван", "Екатерина", "Дмитрий", "Ольга" ]
-  bios = [
-    "Люблю искусство и литературу",
-    "Профессиональный художник с 5-летним опытом",
-    "Увлекаюсь фотографией и современным искусством",
-    "Работаю дизайнером и создаю уникальные проекты",
-    "Исследователь локального искусства",
-    "Куратор выставок и арт-мероприятий"
-  ]
-
-  cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
-
-
   i = 0
 
   quantity.times do
@@ -102,9 +111,10 @@ def create_users(quantity)
     puts "User created with id #{user.id}"
 
      profile_data = {
-      name: names.sample,
-      bio: bios.sample,
-      placed: cities.sample
+      name: @names.sample,
+      bio: @bios.sample,
+      placed: @cities.sample,
+      avatar: upload_random_avatar
     }
 
     # Создание профиля для пользователя
@@ -160,11 +170,14 @@ def create_posts(quantity)
       author: create_author,
       post_image: upload_random_image,
       public: get_random_bool,
-      user: user
+      user: user,
+      city: @cities.sample,
+      price: @price.sample,
+      amount: rand(0..10)
     )
     post.tag_list = @tags.sample(rand(2..3))
-
-    puts "Post with id #{post.id} and user id:#{user.id} just created"
+    post.save!
+    puts "Post with id #{post.id}, user id:#{user.id}, tags: #{post.tag_list} just created"
   end
 end
 

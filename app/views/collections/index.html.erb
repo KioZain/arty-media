@@ -1,24 +1,18 @@
-
 <div class="Content">
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Коллекции" %>
-
-
-<div class="W_NavigationCreatePost">
+  <p style="color: green"><%= notice %></p>
+  <% content_for :title, "Коллекции" %>
+  <div class="W_NavigationCreatePost">
     <div class="M_NavigationLinksPosts">
       <%= link_to "Посты", posts_path, class: ("active-link" if current_page?(posts_path)) %>
       <%= link_to "Коллекции", collections_path, class: ("active-link" if current_page?(collections_path)) %>
     </div>
-
-  <% if current_user && current_user.admin?%>
-    <div class="A_Button"><%= link_to " + Создать коллекцию", new_admin_collection_path %></div>
-  <% end %>
-</div>
-
-<div id="collections" class="C_Collections">
-  <% @collections.each do |collection| %>
-    <%= render collection: @collections, partial: "collections/collection" %>
-  <% end %>
-</div>
+    <% if current_user && current_user.admin?%>
+      <div class="A_Button"><%= link_to " + Создать коллекцию", new_admin_collection_path %></div>
+    <% end %>
+  </div>
+  <div id="collections" class="C_Collections">
+    <% @collections.each do |collection| %>
+      <%= render "collections/collection", collection: collection %>
+    <% end %>
+  </div>
 </div>

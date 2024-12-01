@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_152308) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_01_190201) do
   create_table "collections", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -37,6 +37,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_152308) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "displays", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.string "name"
+    t.string "year"
+    t.string "display_type"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_displays_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -47,6 +58,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_152308) do
     t.integer "user_id"
     t.boolean "public", default: false
     t.string "secret"
+    t.integer "amount"
+    t.string "city"
+    t.integer "price"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -111,5 +125,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_152308) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "displays", "posts"
   add_foreign_key "taggings", "tags"
 end
