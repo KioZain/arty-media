@@ -6,6 +6,6 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:displays).find(params[:id])
   end
 end

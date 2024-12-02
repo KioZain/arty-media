@@ -1,4 +1,5 @@
 <%= link_to profile_path(profile),class: "O_Profile", id: dom_id(profile) do %>
+  <%= image_tag profile.avatar_url, width: 120 %>
   <p>
     <strong>user_id: <%= profile.user_id %></strong>
   </p>
@@ -11,5 +12,4 @@
   <p>
     <strong>Placed: <%= profile.placed %></strong>
   </p>
-  <%= image_tag profile.avatar_url, width: 120 %>
 <% end %>
