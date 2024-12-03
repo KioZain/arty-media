@@ -83,9 +83,9 @@ end
 def seed
   reset_db
   create_users(15)
-  create_posts(44)
+  create_posts(72)
   create_comments(2..4)
-  create_collections(12)
+  create_collections(24)
 end
 
 
@@ -177,7 +177,16 @@ def create_posts(quantity)
     )
     post.tag_list = @tags.sample(rand(2..3))
     post.save!
-    puts "Post with id #{post.id}, user id:#{user.id}, tags: #{post.tag_list} just created"
+
+     post.displays.create(
+      name: "Название экспозиции: #{post.title}",
+      year: rand(2000..2023).to_s,
+      display_type: [ "Выставка", "Арт-маркет", "Галерея", "Цифровая экспозиция" ].sample,
+      link: "https://example.com/display/#{post.id}"
+    )
+
+
+    puts "Post with id #{post.id}, user id:#{user.id}, tags: #{post.tag_list}, displays: #{post.displays.count} just created"
   end
 end
 

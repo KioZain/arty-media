@@ -3,6 +3,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_post, only: %i[ edit update destroy ]
 
   def new
+    @post.displays.build if @post.displays.empty?
   end
 
 
@@ -10,6 +11,7 @@ class Admin::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @posts = Post.all
+    @post.displays.build if @post.displays.empty?
   end
 
   # POST /posts or /posts.json
@@ -64,7 +66,7 @@ class Admin::PostsController < ApplicationController
     def post_params
       params.require(:post).permit(
         :title, :body, :author, :post_image, :tag_list, :price, :city, :amount,
-        displays_attributes: [ :id, :name, :year, :display_type, :link ]
+        displays_attributes: [ :name, :year, :display_type, :link ]
       )
     end
 end

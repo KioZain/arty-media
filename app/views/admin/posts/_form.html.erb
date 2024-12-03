@@ -1,4 +1,4 @@
-<%= form_with(model: [:admin, post]) do |form| %>
+<%= form_with(model: [:admin, post]) do |f| %>
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,69 +10,71 @@
     </div>
   <% end %>
   <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
+    <%= f.label :author, style: "display: block" %>
+    <%= f.text_field :author %>
   </div>
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= f.label :title, style: "display: block" %>
+    <%= f.text_field :title %>
   </div>
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= f.label :body, style: "display: block" %>
+    <%= f.text_area :body %>
   </div>
   <br>
   <hr>
   <h3>Опциональные поля</h3>
   <br>
   <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+    <%= f.label :city, style: "display: block" %>
+    <%= f.text_field :city %>
   </div>
   <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
+    <%= f.label :amount, style: "display: block" %>
+    <%= f.text_field :amount %>
   </div>
   <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
+    <%= f.label :price, style: "display: block" %>
+    <%= f.text_field :price %>
   </div>
   <hr>
   <br>
   <hr>
   <%# Данный об экспозиции %>
   <h3>Данные экспозиции</h3>
-  <div class="display-fields">
-    <div>
-      <%= form.label :name, "Название" %>
-      <%= form.text_field :name, class: "form-control" %>
+  <%= f.fields_for :displays do |display_form| %>
+    <div class="display-fields">
+      <div>
+        <%= display_form.label :name, "Название" %>
+        <%= display_form.text_field :name, class: "A_Form" %>
+      </div>
+      <div>
+        <%= display_form.label :year, "Год" %>
+        <%= display_form.text_field :year, class: "A_Form" %>
+      </div>
+      <div>
+        <%= display_form.label :display_type, "Тип экспозиции" %>
+        <%= display_form.select :display_type, ["Выставка", "Арт-маркет", "Галерея", "Цифровая экспозиция"], {}, class: "A_Form" %>
+      </div>
+      <div>
+        <%= display_form.label :link, "Ссылка" %>
+        <%= display_form.text_field :link, class: "A_Form" %>
+      </div>
     </div>
-    <div>
-      <%= form.label :year, "Год" %>
-      <%= form.text_field :year, class: "form-control" %>
-    </div>
-    <div>
-      <%= form.label :display_type, "Тип экспозиции" %>
-      <%= form.select :display_type, ["Выставка", "Арт-маркет", "Галерея", "Цифровая экспозиция"], {}, class: "form-control" %>
-    </div>
-    <div>
-      <%= form.label :link, "Ссылка" %>
-      <%= form.text_field :link, class: "form-control" %>
-    </div>
-  </div>
+  <% end %>
   <hr>
   <%# Теги %>
   <div>
     <label for="">Tags</label>
-    <%= form.text_field :tag_list %>
+    <%= f.text_field :tag_list %>
   </div>
   <%# Картинка %>
   <div>
-    <%= form.label :post_image, style: "display: block" %>
-    <%= form.file_field :post_image %>
+    <%= f.label :post_image, style: "display: block" %>
+    <%= f.file_field :post_image %>
   </div>
   <br>
   <div>
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

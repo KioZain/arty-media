@@ -12,6 +12,14 @@
   <br>
   <%= image_tag @profile.avatar_url, width: 400 %>
   <br>
+  <h1>Экспозиции пользователя</h1>
+  <% @displays.each do |display| %>
+    <div class="M_Display">
+      <h1><%= display.name %> (<%= display.year %>)</h1>
+      <p>Тип: <%= display.display_type %></p>
+      <p>Ссылка: <%= link_to display.link, display.link, target: "_blank" %></p>
+    </div>
+  <% end %>
   <div class="S_Works">
     <h1>Работы пользователя</h1>
     <div class="C_Works", style="display: flex; flex-wrap: wrap">
