@@ -1,0 +1,24 @@
+.Subtitle_20 {
+  font-family: "Geist";
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+h2 {
+  font-family: "Geist";
+  font-size: 2rem;
+  letter-spacing: 24%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+h3 {
+  font-family: "Geist";
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.Q_PostImage {
+  height: 320px;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 4px;
+}

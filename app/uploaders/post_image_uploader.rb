@@ -44,7 +44,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg"
   # end
-  # def asset_host
-  #   "https://localhost:3000"
-  # end
+  def asset_host
+    "http://localhost:3000"
+  end
 end

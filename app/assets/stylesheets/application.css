@@ -7,4 +7,5 @@
  *= require formContainer
  *= require basics
  *= require_tree ./components
+ *= require responsive
  */

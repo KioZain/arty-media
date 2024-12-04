@@ -1,19 +1,22 @@
 <header class="S_Header">
   <nav class="C_Links">
     <div class="M_LinksAbout">
-      <%= link_to "Промо", root_path %>
-      <%= link_to "О медиа", about_path %>
+      <%= link_to "ARTOVOE", root_path,class: "nav_link" %>
+      <%= link_to "О нас", about_path,class: "nav_link" %>
     </div>
     <%# Admin link %>
   </nav>
   <% if user_signed_in? %>
     <div class="M_LinksInner">
-      <%= link_to "Работы", posts_url %>
-      <%= link_to "Коллекции", collections_path %>
-      <%= link_to "Художники", profiles_path %>
+      <%= link_to "Работы", posts_url,class: "nav_link" %>
+      <%= link_to "Коллекции", collections_path,class: "nav_link" %>
+      <%= link_to "Художники", profiles_path,class: "nav_link" %>
     </div>
   <% end %>
   <nav class="C_Links">
+    <% if current_user && current_user.admin?%>
+      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
+    <% end %>
     <% if user_signed_in? %>
       <%= link_to current_user.email, edit_user_registration_path %>
       <%= link_to "Выйти", destroy_user_session_path, data: { "turbo-method": :delete } %>

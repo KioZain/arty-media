@@ -1,7 +1,7 @@
-json.extract! collection, :id, :title, :body
+json.extract! collection, :title, :body
 
-json.user do
-  json.email collection.user.email
+json.profile do
+  json.name collection.user.profile.name if collection.user&.profile
 end
 
-json.url collection_url(collection)
+# json.url collection_url(collection)

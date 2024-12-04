@@ -1,15 +1,19 @@
 <%= link_to profile_path(profile),class: "O_Profile", id: dom_id(profile) do %>
-  <%= image_tag profile.avatar_url, width: 120 %>
-  <p>
-    <strong>user_id: <%= profile.user_id %></strong>
-  </p>
-  <p>
-    <strong>Name: <%= profile.name %></strong>
-  </p>
-  <p>
-    <strong>Bio: <%= profile.bio %> </strong>
-  </p>
-  <p>
-    <strong>Placed: <%= profile.placed %></strong>
-  </p>
+  <div class="W_ProfileImage">
+    <%= image_tag profile.avatar_url, class: "A_Avatar" %>
+    <div class="W_ProfileBio">
+      <div class="M_SubText">
+        <h3 class="Subtitle_20"><%= profile.name %></h3>
+        <p><%= profile.bio %></p>
+      </div>
+      <div class="A_CategoryData">
+        <p><%= profile.placed %></p>
+      </div>
+    </div>
+  </div>
+  <div class="A_StatisticProfile">
+    <p>
+      Работ:<%= @profile_post_counts[profile.user_id] || 0 %> | Коллекций:<%= @profile_post_counts[profile.user_id] || 0 %>
+    </p>
+  </div>
 <% end %>

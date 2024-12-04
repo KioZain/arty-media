@@ -1,0 +1,19 @@
+.W_ProfileImage {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+.W_ProfileBio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .A_CategoryData {
+    display: inline-block;
+  }
+}
+.W_ArtitsFilter {
+  display: flex;
+  justify-content: space-between;
+}

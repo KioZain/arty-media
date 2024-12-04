@@ -1,0 +1,61 @@
+.A_Avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 40rem;
+}
+.A_CategoryData {
+}
+.A_StatisticProfile {
+  background-color: var(--pink);
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.A_Tag {
+  color: var(--almost-black);
+  text-decoration: none;
+  border: 0.5px solid var(--almost-black);
+  padding: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 4px;
+  width: fit-content;
+  display: inline-block;
+
+  &:hover {
+    background-color: black;
+    color: var(--cream-white);
+  }
+}
+.A_Category {
+  margin-bottom: 8px;
+  .A_Tag {
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: var(--ash-grey);
+    text-transform: none;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: var(--pure-white);
+    }
+  }
+}
+.A_Button {
+  background-color: var(--almost-black);
+  padding: 0.8rem 1rem;
+  width: fit-content;
+  font-size: 14px;
+  display: block;
+  height: fit-content;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  height: fit-content;
+
+  &:hover {
+    opacity: 90%;
+  }
+}

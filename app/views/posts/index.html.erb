@@ -1,28 +1,22 @@
 <% content_for :title, "Posts" %>
-<div class="Content">
-  <p style="color: green"><%= notice %></p>
-  <div class="W_NavigationCreatePost">
-    <div class="M_NavigationLinksPosts">
-      <%= link_to "Посты", posts_path, class: ("active-link" if current_page?(posts_path)) %>
-      <%= link_to "Коллекции", collections_path, class: ("active-link" if current_page?(collections_path)) %>
-    </div>
-    <%# Admin check %>
-    <% if current_user && current_user.admin?%>
-      <div class="A_Button"><%= link_to " + Создать пост", new_admin_post_path %></div>
+<p style="color: green"><%= notice %></p>
+<div class="S_FiltersPosts">
+  <%# Admin check %>
+  <div class="C_Categoires">
+    <%= link_to "Все |", posts_path, class:"A_Tag" %>
+    <% Post.tag_counts_on(:categories).each do |tag| %>
+      <%= link_to tag.name, tagged_posts_path(tag.name), class:"A_Tag" %>
     <% end %>
   </div>
   <div class="C_Tags Navigation">
-    <%= link_to "Все посты", posts_path, class:"A_Tag" %>
     <% Post.tag_counts_on(:tags).each do |tag| %>
       <%= link_to tag.name, tagged_posts_path(tag.name), class:"A_Tag" %>
     <% end %>
   </div>
-  <%# Render %>
-  <div id="posts"  class="S_Posts">
-    <% @posts.each do |post| %>
-      <div class="O_Post">
-        <%= render 'posts/post', post: post %>
-      </div>
-    <% end %>
-  </div>
+</div>
+<%# Render %>
+<div id="posts" class="C_AllPosts">
+  <% @posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
 </div>

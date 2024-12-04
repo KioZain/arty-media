@@ -1,19 +1,5 @@
 .C_Tags {
-  a.A_Tag {
-    color: var(--almost-black);
-    text-decoration: none;
-    border: 0.5px solid var(--almost-black);
-    padding: 4px;
-    font-size: 14px;
-    border-radius: 2px;
-    width: fit-content;
-    display: inline-block;
-
-    &:hover {
-      background-color: black;
-      color: var(--cream-white);
-    }
-  }
+  margin-bottom: 0.5rem;
 }
 
 .Navigation {

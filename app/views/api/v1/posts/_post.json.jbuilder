@@ -1,7 +1,7 @@
-json.extract! post, :id, :title, :body, :tag_list, :post_image
+json.extract! post, :title, :body, :tag_list, :post_image
 
-json.user do
-  json.email post.user.email
+json.profile do
+  json.name post.user.profile.name if post.user&.profile
 end
 
-json.url post_url(post)
+# json.url post_url(post)

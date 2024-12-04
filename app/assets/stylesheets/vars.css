@@ -1,7 +1,25 @@
 :root {
-    --almost-black: #1A1E20;
-    --moon-yellow: #FFF59E;
-    --cream-white: #F8F5E8;
-    --warm-grey: #EAE8E1;
-    --ash-grey: #565D61;
+  --almost-black: #1a1e20;
+  --moon-yellow: #fff59e;
+  --cream-white: #faf3eb;
+  --warm-grey: #eae8e1;
+  --pure-white: #ffffff;
+  --ash-grey: #858585;
+  --deep-blue: #0024cc;
+  --sun-yellow: #e0b81f;
+  --diamine-green: #1b8e13;
+  --pink: #ffc3e7;
+
+  /* ContainerSizes */
+  --width-container: 1120px;
+}
+@media (max-width: 1240px) {
+  :root {
+    --width-container: 928px;
+  }
+}
+@media all and (max-width: 1060px) {
+  :root {
+    --width-container: 768px;
+  }
 }

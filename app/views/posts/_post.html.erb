@@ -1,17 +1,19 @@
-<%= link_to post_path(post), class: "O_Post", id: dom_id(post) do %>
-  <div class="Clip">
-    <%= image_tag post.post_image.url %>
-  </div>
-  <div class="M_PostDescription">
-    <h1><%= post.title %></h1>
+<%= link_to post_path(post), class: "A_PostLink", id: dom_id(post) do %>
+  <div class="O_Post">
     <div class="C_Tags">
       <% post.tags.each do |tag| %>
-        <%= link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>
+        <span class="A_Tag"><%= tag.name %></span>
       <% end %>
     </div>
-    <div class="W_UserAuthor">
-      <h3 class="A_Email"><%= post.user.email %></h3>
-      <h3 class="A_Author">Автор: <%= post.author %></h3>
+    <%= image_tag post.post_image.url, class:"Q_PostImage" %>
+    <div class="A_Category" style="margin-top: 1rem;">
+      <% post.categories.each do |tag| %>
+        <span class="A_Tag"><%= tag.name %></span>
+      <% end %>
+    </div>
+    <div class="M_SubText">
+      <h3><%= post.title %></h3>
+      <p><%= post.user.profile.name %></p>
     </div>
   </div>
 <% end %>

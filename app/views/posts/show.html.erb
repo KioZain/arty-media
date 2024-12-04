@@ -23,14 +23,14 @@
       <h1 class="A_PostTitle"><%= @post.title %></h1>
       <div class="M_PostCreators">
         <h3>Выложил <%= @post.user.email %> </h3>
-        <h3>Автор: <%= @post.author %></h3>
+        <h3>Автор: <%= @post.user.profile.name %></h3>
         <p>Город: <%= @post.city %></p>
         <p>Цена: <%= @post.price %></p>
         <p>Тиражность: <%= @post.amount %></p>
         <%= @post.id %>
       </div>
       <p><%= @post.body%></p>
-      <%= image_tag @post.post_image.url if @post.post_image.present? %>
+      <%= image_tag @post.post_image.url  %>
     </div>
     <div class="O_Display">
       <h4>Выставки:</h4>

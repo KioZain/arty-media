@@ -1,0 +1,44 @@
+.C_ProfilesArtists {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: var(--width-container);
+  margin: 0 auto;
+  gap: 1rem;
+
+  .O_Profile {
+    grid-column: span 3;
+  }
+}
+.O_Profile:nth-child(3n + 2) {
+  transform: translateY(-2rem);
+}
+.C_AllPosts {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: var(--width-container);
+  margin: 0 auto;
+  gap: 1rem;
+
+  .A_PostLink {
+    grid-column: span 3;
+    text-decoration: none;
+    background-color: red;
+    height: fit-content;
+  }
+}
+.S_FiltersPosts {
+  .C_Categoires {
+    margin-bottom: 0.5rem;
+    .A_Tag {
+      border: none;
+      padding: 0;
+      font-size: 1.5rem;
+
+      &:hover {
+        background-color: inherit;
+        color: var(--almost-dark);
+        text-decoration: underline;
+      }
+    }
+  }
+}

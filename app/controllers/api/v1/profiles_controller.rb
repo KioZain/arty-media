@@ -4,8 +4,5 @@ class Api::V1::ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
-    @posts = @profile.user.posts
-    @displays = Display.where(post_id: @posts.pluck(:id))
   end
 end

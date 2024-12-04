@@ -3,8 +3,8 @@
 }
 
 body {
-  font-family: "InterTight";
-  background: var(--warm-grey);
+  font-family: "Geist";
+  background: var(--cream-white);
 
   h1 {
     font-size: 40px;
@@ -16,7 +16,7 @@ body {
 
   p {
     line-height: 140%;
-    font-family: "InterTight";
+    font-family: "Geist";
     font-weight: 400;
   }
 }
@@ -42,20 +42,6 @@ body {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 10rem;
-}
-
-.A_Button {
-  background-color: black;
-  padding: 1rem;
-  width: fit-content;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  height: fit-content;
-
-  a {
-    color: white;
-    text-decoration: none;
-  }
 }
 
 .M_HeadLinks {

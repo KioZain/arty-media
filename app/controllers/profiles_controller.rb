@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.includes(:user)
+     @profile_post_counts = Post.group(:user_id).count
+    @profile_collection_counts = Collection.group(:user_id).count
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -11,6 +13,9 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     @posts = @user.posts
     @collections = @user.collections
+    @profile = Profile.find(params[:id])
+    @posts = @profile.user.posts
+    @displays = Display.where(post_id: @posts.pluck(:id))
   end
 
   # GET /profiles/new

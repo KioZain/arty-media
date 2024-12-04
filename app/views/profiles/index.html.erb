@@ -1,10 +1,21 @@
-<div class="Content">
-  <p style="color: green"><%= notice %></p>
-  <% content_for :title, "Profiles" %>
-  <h1>Все художники</h1>
-  <div class="profiles-list">
-    <% @profiles.each do |profile| %>
-      <%= render 'profiles/profile', profile: profile %>
-    <% end%>
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Художники" %>
+<div class="S_FirstScreenProfile">
+  <div class="O_HeadingScreenProfile">
+    <h1>Тут обитают художники</h1>
   </div>
+  <div class="W_ArtitsFilter">
+    <h2>Новые <br>
+      художники</h2>
+    <div class="M_ProfileFilter">
+      <p>Все</p>
+      <p>По популярности</p>
+      <p>По дате добавления</p>
+    </div>
+  </div>
+</div>
+<div class="C_ProfilesArtists">
+  <% @profiles.each do |profile| %>
+    <%= render 'profiles/profile', profile: profile %>
+  <% end%>
 </div>

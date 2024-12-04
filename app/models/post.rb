@@ -1,12 +1,15 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { minimum: 5 }
   validates :post_image, presence: true
+
   # Associations-------------------------------
 
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :collections
   belongs_to :user
   acts_as_taggable_on :tags
+  acts_as_taggable_on :categories
+
 
   has_many :displays, dependent: :destroy
   accepts_nested_attributes_for :displays

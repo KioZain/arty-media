@@ -54,9 +54,9 @@
     "bio": "A senior at the China International Art University, Xhou has become well-known for his miniature sculptures, often the size of a rice granule, that are displayed by rear projection of microscope images on canvas. Xhou will discuss the art and science behind his incredibly detailed works of art."
   }
 ]
-@tags = [ "сюр", "керамика", "онтология", "природа", "скульптура", "картина", "фотография", "цифра", "печтная графика" ]
+@tags = [ "cюрреализм", "нежность", "онтология", "природа", "повседневность", "философия", "жизнь", "цифра", "семантика" ]
 
-@names = [ "eve", "Максим", "Злата", "Алексей", "Чхыф", "Олег Пащенко", "somebody", "nobody31", "shoegazer", "волчок" ]
+@names = [ "digitalnyan", "kiozain", "zlatko", "tuberkulexa", "Чхыф", "humanim4lien", "somebody", "nobody31", "shoegazer", "волчок" ]
 @bios = [
     "Люблю искусство и литературу",
     "Профессиональный художник с 5-летним опытом",
@@ -68,6 +68,7 @@
 
 @cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
 @price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
+@categories = [ "Современное искусство", "Классика", "Портреты", "Пейзажи", "Авангард" ]
 
 
 
@@ -175,11 +176,12 @@ def create_posts(quantity)
       price: @price.sample,
       amount: rand(0..10)
     )
+    # post.category_list = @categories.sample
     post.tag_list = @tags.sample(rand(2..3))
     post.save!
 
      post.displays.create(
-      name: "Название экспозиции: #{post.title}",
+      name: "Название экспозиции #{post.title}",
       year: rand(2000..2023).to_s,
       display_type: [ "Выставка", "Арт-маркет", "Галерея", "Цифровая экспозиция" ].sample,
       link: "https://example.com/display/#{post.id}"

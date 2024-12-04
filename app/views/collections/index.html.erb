@@ -2,10 +2,6 @@
   <p style="color: green"><%= notice %></p>
   <% content_for :title, "Коллекции" %>
   <div class="W_NavigationCreatePost">
-    <div class="M_NavigationLinksPosts">
-      <%= link_to "Посты", posts_path, class: ("active-link" if current_page?(posts_path)) %>
-      <%= link_to "Коллекции", collections_path, class: ("active-link" if current_page?(collections_path)) %>
-    </div>
     <% if current_user && current_user.admin?%>
       <div class="A_Button"><%= link_to " + Создать коллекцию", new_admin_collection_path %></div>
     <% end %>

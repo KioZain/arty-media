@@ -1,0 +1,9 @@
+@media all and (max-width: 1240px) {
+  img.Q_PostImage {
+    height: 220px;
+  }
+
+  .A_PostLink {
+    grid-column: span 2;
+  }
+}
