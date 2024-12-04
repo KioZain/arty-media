@@ -1,42 +1,40 @@
-<div class="Contetnt">
-  <p style="color: green"><%= notice %></p>
-  <%= @profile.user_id %>
-  <br>
-  <%= @profile.user.email %>
-  <br>
-  <h1><%= @profile.name %></h1>
-  <br>
-  <h2><%= @profile.bio %></h2>
-  <br>
-  <%= @profile.placed %>
-  <br>
-  <%= image_tag @profile.avatar_url, width: 400 %>
-  <br>
-  <h1>Экспозиции пользователя</h1>
-  <% @displays.each do |display| %>
-    <div class="M_Display">
-      <h1><%= display.name %> (<%= display.year %>)</h1>
-      <p>Тип: <%= display.display_type %></p>
-      <p>Ссылка: <%= link_to display.link, display.link, target: "_blank" %></p>
-    </div>
-  <% end %>
-  <div class="S_Works">
-    <h1>Работы пользователя</h1>
-    <div class="C_Works", style="display: flex; flex-wrap: wrap">
-      <% @posts.each do |post| %>
-        <%= render 'posts/post', post: post %>
-      <% end %>
-    </div>
-    <h1>Коллекции</h1>
-    <div class="C_Collections">
-      <% @collections.each do |collection| %>
-        <%= render 'collections/collection', collection: collection %>
-      <% end %>
-    </div>
+<p style="color: green"><%= notice %></p>
+<div class="M_ProfileHead">
+  <%= image_tag @profile.avatar_url,class: "A_ProfileAvatar", width: 240 %>
+  <div class="M_Subtext">
+    <h3 class="Subtitle_20"><%= @profile.name %></h3>
+    <p><%= @profile.bio %></p>
+    <p>Работ: <%= @profile.user.posts.count %></p>
+    <p>Коллекций: <%= @profile.user.collections.count %></p>
+    <% display_names = @displays.first(3).pluck(:name) %>
+    <p>Названия экспозиций: <%= display_names.join(", ") %></p>
   </div>
-  <div>
-    <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-    <%= link_to "Back to profiles", profiles_path %>
-    <%= button_to "Destroy this profile", @profile, method: :delete %>
+</div>
+</div>
+<div class="S_Works">
+  <h2>Работы пользователя</h2>
+  <div class="C_AllPosts">
+    <% @posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
   </div>
+  <h2>Коллекции</h2>
+  <div class="C_Collections">
+    <% @collections.each do |collection| %>
+      <%= render 'collections/collection', collection: collection %>
+    <% end %>
+  </div>
+</div>
+<h2>Экспозиции пользователя</h2>
+<% @displays.each do |display| %>
+  <div class="M_Display">
+    <h1><%= display.name %> (<%= display.year %>)</h1>
+    <p>Тип: <%= display.display_type %></p>
+    <p>Ссылка: <%= link_to display.link, display.link, target: "_blank" %></p>
+  </div>
+<% end %>
+<div>
+  <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
+  <%= link_to "Back to profiles", profiles_path %>
+  <%= button_to "Destroy this profile", @profile, method: :delete %>
 </div>

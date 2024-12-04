@@ -1,9 +1,81 @@
 @media all and (max-width: 1240px) {
+  .W_TitleTags {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
   img.Q_PostImage {
     height: 220px;
   }
 
-  .A_PostLink {
-    grid-column: span 2;
+  .C_AllPosts {
+    grid-template-columns: repeat(6, 1fr);
+    .A_PostLink {
+      grid-column: span 3;
+    }
+  }
+  .A_Tag {
+    font-size: 12px;
+  }
+  .C_ProfilesArtists {
+    grid-template-columns: repeat(6, 1fr);
+
+    .O_Profile:nth-child(3n + 2) {
+      transform: translateY(0rem);
+    }
+    .O_Profile {
+      grid-column: 3 span;
+      padding: 0;
+
+      .W_ProfileImage {
+        padding: 1rem;
+      }
+    }
+  }
+  .S_Comments {
+    width: 100%;
+    padding: 0;
+    margin-top: 6rem;
+  }
+}
+@media all and (max-width: 1060px) {
+  .S_Header {
+    .C_Links {
+      display: none;
+    }
+  }
+  .C_ProfilesArtists {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media all and (max-width: 768px) {
+  .C_AllPosts {
+    grid-template-columns: repeat(4, 1fr);
+
+    .A_PostLink {
+      grid-column: span 4;
+    }
+  }
+
+  .W_Post {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    .Q_ShowPostImage {
+      grid-column: 1 / 7;
+      width: 85%;
+      margin: 0 auto;
+      grid-row: 1/2;
+      height: 410px;
+      object-fit: cover;
+    }
+    .S_Post {
+      grid-column: 1/7;
+      grid-row: 2/3;
+      padding: 0;
+    }
+    .S_Comments {
+      margin-top: 0;
+    }
   }
 }

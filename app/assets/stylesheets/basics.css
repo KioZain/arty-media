@@ -7,7 +7,7 @@ body {
   background: var(--cream-white);
 
   h1 {
-    font-size: 40px;
+    font-size: 4rem;
     font-family: "Kommuna";
     line-height: 100%;
     font-weight: normal;

@@ -11,7 +11,7 @@
 .S_FiltersPosts {
   width: var(--width-container);
   margin: 0 auto;
-  margin-top: 8rem;
+  margin-top: 6rem;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -57,4 +57,15 @@
       }
     }
   }
+}
+.S_Post {
+  grid-column: 5/10;
+  padding-left: 1.5rem;
+}
+.S_Comments {
+  width: 75%;
+  margin: 0 auto;
+  padding-left: 2rem;
+  margin-top: 10rem;
+  margin-bottom: 15rem;
 }

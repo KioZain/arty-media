@@ -15,7 +15,7 @@
   </div>
 </div>
 <%# Render %>
-<div id="posts" class="C_AllPosts">
+<div class="C_AllPosts">
   <% @posts.each do |post| %>
     <%= render 'posts/post', post: post %>
   <% end %>

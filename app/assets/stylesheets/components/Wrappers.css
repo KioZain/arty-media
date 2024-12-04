@@ -17,3 +17,12 @@
   display: flex;
   justify-content: space-between;
 }
+.W_Post {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1rem;
+}
+/* PostShow */
+.W_TitleTags {
+  margin-bottom: 1rem;
+}

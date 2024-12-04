@@ -21,9 +21,10 @@
 
   .A_PostLink {
     grid-column: span 3;
+    height: 100%;
     text-decoration: none;
-    background-color: red;
     height: fit-content;
+    display: block;
   }
 }
 .S_FiltersPosts {
@@ -40,5 +41,16 @@
         text-decoration: underline;
       }
     }
+  }
+}
+.C_DataPost {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  p {
+    display: inline-block;
+    min-width: 110px;
   }
 }

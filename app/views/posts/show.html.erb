@@ -1,4 +1,4 @@
-<div class="Content">
+<div class="L_PostShow">
   <p style="color: green"><%= notice %></p>
   <div class="M_HeadLinks">
     <% if params[:collection_id].present? %>
@@ -18,41 +18,48 @@
     </div>
   </div>
   <div class="W_Post">
+    <%= image_tag @post.post_image.url, class: "Q_ShowPostImage"  %>
     <div class="S_Post">
-      <%= @post.tag_list %>
-      <h1 class="A_PostTitle"><%= @post.title %></h1>
-      <div class="M_PostCreators">
-        <h3>Выложил <%= @post.user.email %> </h3>
-        <h3>Автор: <%= @post.user.profile.name %></h3>
-        <p>Город: <%= @post.city %></p>
-        <p>Цена: <%= @post.price %></p>
-        <p>Тиражность: <%= @post.amount %></p>
-        <%= @post.id %>
-      </div>
-      <p><%= @post.body%></p>
-      <%= image_tag @post.post_image.url  %>
-    </div>
-    <div class="O_Display">
-      <h4>Выставки:</h4>
-      <% @post.displays.each do |display| %>
-        <div class="O_Display">
-          <p>Название: <%= display.name %></p>
-          <p>Год: <%= display.year %></p>
-          <p>Тип: <%= display.display_type %></p>
+      <p class="A_AuthorProfile">Автор: <%= @post.user.profile.name %></p>
+      <div class="W_TitleTags">
+        <h1><%= @post.title %></h1>
+        <div class="C_Tags">
         </div>
-      <% end %>
-    </div>
-    <div class="S_Comments">
-      <h1>Комментарии</h1>
-      <div class="C_Comments" >
-        <% @post.comments.each do |comment| %>
-          <%= render comment %>
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>
         <% end %>
-        <%# ФОРМА %>
-        <div class="SendComment">
-          <%= render "comments/form" %>
-        </div>
+      </div>
+      <p class="A_ShowDescription"><%= @post.body%></p>
+      <div class="C_DataPost">
+        <p>Город:<br>
+          <%= @post.city %></p>
+        <p>Тиражность:<br>
+          <%= @post.amount %></p>
+        <p>Цена:<br>
+          <%= @post.price %></p>
       </div>
     </div>
   </div>
+  <div class="S_Comments">
+    <h2 style="text-align: center;">Комментарии</h2>
+    <div class="C_Comments" >
+      <% @post.comments.each do |comment| %>
+        <%= render comment %>
+      <% end %>
+      <%# ФОРМА %>
+      <div class="SendComment">
+        <%= render "comments/form" %>
+      </div>
+    </div>
+  </div>
+  <div class="O_Display">
+    <h4>Выставки:</h4>
+  </div>
 </div>
+<% @post.displays.each do |display| %>
+  <div class="O_Display">
+    <p>Название: <%= display.name %></p>
+    <p>Год: <%= display.year %></p>
+    <p>Тип: <%= display.display_type %></p>
+  </div>
+<% end %>

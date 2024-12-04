@@ -23,3 +23,8 @@
     --width-container: 768px;
   }
 }
+@media all and (max-width: 768px) {
+  :root {
+    --width-container: 90%;
+  }
+}
