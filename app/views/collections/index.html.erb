@@ -1,9 +1,9 @@
-<div class="Content">
-  <p style="color: green"><%= notice %></p>
-  <% content_for :title, "Коллекции" %>
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Коллекции" %>
+<div class="S_Collections">
   <div class="W_NavigationCreatePost">
     <% if current_user && current_user.admin?%>
-      <div class="A_Button"><%= link_to " + Создать коллекцию", new_admin_collection_path %></div>
+      <%= link_to " + Создать коллекцию", new_admin_collection_path,class:"A_Button" %>
     <% end %>
   </div>
   <div id="collections" class="C_Collections">

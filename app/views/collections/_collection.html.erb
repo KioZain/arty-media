@@ -1,5 +1,4 @@
 <%= link_to collection_path(collection), class: "O_Collection", id: dom_id(collection) do %>
-  
   <div class="M_CollectionImages">
     <% collection_posts = collection.posts.limit(4) %>
     <% if collection_posts.size >= 2 %>
@@ -8,16 +7,12 @@
       <% end %>
     <% end %>
   </div>
-  
-    <h1><%= collection.title %></h1>
+  <h3><%= collection.title %></h3>
   <div class="M_CollectionDescription">
-    <% user_email = collection.posts.first&.user&.email %>
-      <% if user_email %>
-        <p class="A_CreatedBy">Создано: <%= user_email %></p>
-      <% end %>
-      
-     <p class="A_ThingsCount">Вещиц внутри: <%= collection.posts.count %></p>
-
-
+    <% user_email = collection.posts.first&.user&.profile.name %>
+    <% if user_email %>
+      <p class="A_CreatedBy">Создано: <%= user_email %></p>
+    <% end %>
+    <p class="A_ThingsCount">Вещиц внутри: <%= collection.posts.count %></p>
   </div>
 <% end %>

@@ -1,13 +1,23 @@
 <p style="color: green"><%= notice %></p>
-<div class="M_ProfileHead">
-  <%= image_tag @profile.avatar_url,class: "A_ProfileAvatar", width: 240 %>
-  <div class="M_Subtext">
-    <h3 class="Subtitle_20"><%= @profile.name %></h3>
-    <p><%= @profile.bio %></p>
+<div class="O_ProfileInfo">
+  <div class="M_ProfileHead">
+    <%= image_tag @profile.avatar_url,class: "A_ProfileAvatar"%>
+    <div class="M_Subtext">
+      <h3 class="Subtitle_20"><%= @profile.name %></h3>
+      <p><%= @profile.bio %></p>
+    </div>
+  </div>
+  <div class="C_ProfileStats">
     <p>Работ: <%= @profile.user.posts.count %></p>
     <p>Коллекций: <%= @profile.user.collections.count %></p>
-    <% display_names = @displays.first(3).pluck(:name) %>
-    <p>Названия экспозиций: <%= display_names.join(", ") %></p>
+    <p><% display_names = @displays.first(3).pluck(:name) %></p>
+    <p>Участие: <%= display_names.join(", ") %></p>
+  </div>
+  <div class="M_ProfileActions">
+    <% if current_user && current_user.admin?%>
+      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
+      <%= link_to " + Создать коллекцию", new_admin_collection_path, class:"A_Button",style: "color:black; text-decoration: none; background:inherit; border: 1px solid black" %>
+    <% end%>
   </div>
 </div>
 </div>
@@ -20,21 +30,25 @@
   </div>
   <h2>Коллекции</h2>
   <div class="C_Collections">
-    <% @collections.each do |collection| %>
-      <%= render 'collections/collection', collection: collection %>
+    <% if @collections.present? %>
+      <% @collections.each do |collection| %>
+        <%= render 'collections/collection', collection: collection %>
+      <% end %>
+    <% else %>
+      <p>У этого пользователя пока нет коллекций.</p>
     <% end %>
   </div>
 </div>
-<h2>Экспозиции пользователя</h2>
-<% @displays.each do |display| %>
-  <div class="M_Display">
-    <h1><%= display.name %> (<%= display.year %>)</h1>
-    <p>Тип: <%= display.display_type %></p>
-    <p>Ссылка: <%= link_to display.link, display.link, target: "_blank" %></p>
+<div class="S_Displays">
+  <h2>Выставки</h2>
+  <div class="C_Displays">
+    <% @displays.each do |display| %>
+      <%= render 'displays/display', display: display %>
+    <% end %>
   </div>
-<% end %>
-<div>
-  <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-  <%= link_to "Back to profiles", profiles_path %>
-  <%= button_to "Destroy this profile", @profile, method: :delete %>
+  <div class="W_EditButtonsProfile">
+    <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
+    <%= link_to "Back to profiles", profiles_path %>
+    <%= button_to "Destroy this profile", @profile, method: :delete %>
+  </div>
 </div>

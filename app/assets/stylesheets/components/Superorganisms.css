@@ -69,3 +69,35 @@
   margin-top: 10rem;
   margin-bottom: 15rem;
 }
+.S_Works {
+  grid-template-columns: repeat(9, 1fr);
+  width: var(--width-container);
+  margin: 0 auto;
+
+  h2 {
+    padding: 2rem 0;
+  }
+
+  .C_Collections {
+    margin-bottom: 5rem;
+  }
+}
+.S_Displays {
+  width: var(--width-container);
+  margin: 0 auto;
+
+  h2 {
+    padding: 2rem 0;
+  }
+}
+.S_Collections {
+  width: var(--width-container);
+  margin: 6rem auto;
+
+  .W_NavigationCreatePost {
+    .A_Button {
+      color: var(--pure-white);
+      text-decoration: none;
+    }
+  }
+}

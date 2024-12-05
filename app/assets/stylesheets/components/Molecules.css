@@ -3,3 +3,24 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+/* Profile */
+.M_ProfileHead {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 1rem;
+
+  .M_Subtext {
+    width: 25rem;
+  }
+}
+/* Display */
+.M_Display {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--pure-white);
+  width: 16.7rem;
+  border-radius: 4px;
+  padding: 1rem;
+  gap: 0.5rem;
+}

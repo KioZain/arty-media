@@ -27,6 +27,20 @@
     display: block;
   }
 }
+.C_Collections {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  .O_Collection {
+    grid-column: span 3;
+    width: 100%;
+  }
+
+  p {
+    grid-column: span 6;
+  }
+}
 .S_FiltersPosts {
   .C_Categoires {
     margin-bottom: 0.5rem;
@@ -53,4 +67,12 @@
     display: inline-block;
     min-width: 110px;
   }
+}
+.C_ProfileStats {
+  width: 15rem;
+}
+.C_Displays {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
