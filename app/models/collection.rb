@@ -1,7 +1,7 @@
 class Collection < ApplicationRecord
   has_and_belongs_to_many :posts
   belongs_to :user
-
+  has_many :likes, as: :likable
 
   validate :must_have_at_least_two_posts
 

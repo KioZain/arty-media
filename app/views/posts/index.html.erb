@@ -3,7 +3,7 @@
 <div class="S_FiltersPosts">
   <%# Admin check %>
   <div class="C_Categoires">
-    <%= link_to "Все |", posts_path, class:"A_Tag" %>
+    <%= link_to "Все", posts_path, class:"A_Tag" %>
     <% Post.tag_counts_on(:categories).each do |tag| %>
       <%= link_to tag.name, tagged_posts_path(tag.name), class:"A_Tag" %>
     <% end %>

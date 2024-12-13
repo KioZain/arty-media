@@ -9,6 +9,7 @@ class Ability
     can :read, Post, public: true
     can :read, Collection, public: true
     can :read, Comment, public: true
+    can :read, Profile, public: true
 
   # For authorized users
   return unless user.present?

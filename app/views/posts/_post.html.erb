@@ -1,20 +1,25 @@
 <%= link_to post_path(post), class: "A_PostLink", id: dom_id(post) do %>
   <div class="O_Post">
+    <!-- Tags -->
     <div class="C_Tags">
       <% post.tags.each do |tag| %>
+        <%# link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>
         <span class="A_Tag"><%= tag.name %></span>
       <% end %>
     </div>
-    <%= image_tag post.post_image.url, class:"Q_PostImage" %>
+    <!-- Image -->
+    <%= image_tag post.post_image.url, class: "Q_PostImage" %>
+    <!-- Category -->
     <div class="A_Category" style="margin-top: 1rem;">
-      <% post.categories.each do |tag| %>
-        <span class="A_Tag"><%= tag.name %></span>
+      <% post.categories.each do |category| %>
+        <%# link_to category, tagged_posts_path(category), class: "A_Tag" %>
+        <span> <%= tag.category %></span>
       <% end %>
     </div>
+    <!-- PostBio -->
     <div class="M_SubText">
       <h3><%= post.title %></h3>
       <p><%= post.user.profile.name %></p>
     </div>
   </div>
 <% end %>
-<%# link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>

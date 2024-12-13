@@ -68,7 +68,7 @@
 
 @cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
 @price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
-@categories = [ "Современное искусство", "Классика", "Портреты", "Пейзажи", "Авангард" ]
+@categories = [ "керамика", "картина", "скульптура", "диджитал", "печтная графика" ]
 @exibition_names = [ 'OGO×WOW' 'Market', 'YRA Fest', 'WinWin' ]
 
 
@@ -160,6 +160,8 @@ def upload_random_image
   uploader
 end
 
+# Tags
+
 # Creating posts-----------------------------------------
 def create_posts(quantity)
   quantity.times do
@@ -176,8 +178,9 @@ def create_posts(quantity)
       price: @price.sample,
       amount: rand(0..10)
     )
-    # post.category_list = @categories.sample
+    # post.category_list = [ @categories.sample ]
     post.tag_list = @tags.sample(rand(2..3))
+    post.category_list = [ @categories.sample ]
     post.save!
 
      post.displays.create(

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :profiles
+  get "like/toggle"
   get "artists/index"
+
   devise_for :users
 
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
     get "/by_tag/:tag", to: "posts#by_tag", on: :collection, as: "tagged"
   end
 
+  resources :profiles
   resources :collections, only: [ :index, :show ]
   resources :subscriptions, only: [ :create ]
 
