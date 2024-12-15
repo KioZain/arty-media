@@ -56,7 +56,15 @@
 ]
 @tags = [ "cюрреализм", "нежность", "онтология", "природа", "повседневность", "философия", "жизнь", "цифра", "семантика" ]
 
+@price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
+@categories = [ "керамика", "картина", "скульптура", "диджитал", "печтная графика" ]
+
+# Profile Content
 @names = [ "digitalnyan", "kiozain", "zlatko", "tuberkulexa", "Чхыф", "humanim4lien", "somebody", "nobody31", "shoegazer", "волчок" ]
+@cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
+@exibition_names = [ 'OGO×WOW' 'Market', 'YRA Fest', 'WinWin' ]
+@contacts = [ "@neuro_edge", "@VoidPulse", "@shadow-wave", "@cipher_bloom", "@freq.split", "@MIND_rift", "@noise_frame",
+              "@lightCORE", "@echo.grid", "@form_SHIFT", "@zen-pix", "@null_space", "@PRISM_tear", "@byte.flow", "@quark_skin" ]
 @bios = [
     "Люблю искусство и литературу(я наврал)",
     "Профессиональный художник с 5 лет",
@@ -65,12 +73,6 @@
     "Исследователь локального искусства",
     "Куратор выставок и арт-мероприятий"
   ]
-
-@cities = [ "Москва", "Санкт-Петербург", "Казань", "Екатеринбург", "Новосибирск", "Владивосток" ]
-@price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
-@categories = [ "керамика", "картина", "скульптура", "диджитал", "печтная графика" ]
-@exibition_names = [ 'OGO×WOW' 'Market', 'YRA Fest', 'WinWin' ]
-
 
 # Rake-----------------------------------------
 def reset_db
@@ -115,6 +117,7 @@ def create_users(quantity)
       name: @names.sample,
       bio: @bios.sample,
       placed: @cities.sample,
+      contact: @contacts.sample,
       avatar: upload_random_avatar
     }
 
@@ -257,7 +260,5 @@ def add_posts_to_collection(collection)
 
   true
 end
-
-
 
 seed

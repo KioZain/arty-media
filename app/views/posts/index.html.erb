@@ -1,7 +1,10 @@
 <% content_for :title, "Posts" %>
 <p style="color: green"><%= notice %></p>
 <div class="S_FiltersPosts">
-  <%# Admin check %>
+  <div class="W_TypesOfContent">
+    <%= link_to "Работы", posts_url, class: "A_TypeOfContent" %>
+    <%= link_to "Коллекции",collections_path, class: "A_TypeOfContent" %>
+  </div>
   <div class="C_Categoires">
     <%= link_to "Все", posts_path, class:"A_Tag" %>
     <% Post.tag_counts_on(:categories).each do |tag| %>
@@ -17,6 +20,6 @@
 <%# Render %>
 <div class="C_AllPosts">
   <% @posts.each do |post| %>
-    <%= render 'posts/post', post: post %>
+    <div class="O_Post"><%= render 'posts/post', post: post %></div>
   <% end %>
 </div>

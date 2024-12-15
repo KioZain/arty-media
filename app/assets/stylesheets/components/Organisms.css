@@ -26,15 +26,18 @@
   border-radius: 4px;
   padding: 1rem;
   text-decoration: none;
+  position: relative;
   color: var(--almost-black);
 
-  a {
-    color: var(--almost-black);
+  .A_PostLink {
+    display: inline-block;
+    position: absolute;
   }
 
   .M_SubText {
-    h3 {
-      height: 40px;
+    line-height: 140%;
+    .A_PostTitleLink {
+      height: 3.5rem;
     }
   }
 }

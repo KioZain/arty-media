@@ -29,3 +29,17 @@
 .W_EditButtonsProfile {
   padding: 3rem 0;
 }
+.W_TypesOfContent {
+  padding: 1rem 0;
+  .A_TypeOfContent {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--almost-dark);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

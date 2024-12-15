@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get "like/toggle"
   get "artists/index"
+
+  get "like/toggle"
 
   devise_for :users
 

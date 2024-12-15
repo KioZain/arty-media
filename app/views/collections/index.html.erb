@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 <% content_for :title, "Коллекции" %>
 <div class="S_Collections">
+  <div class="W_TypesOfContent">
+    <%= link_to "Работы", posts_url, class: "A_TypeOfContent" %>
+    <%= link_to "Коллекции",collections_path, class: "A_TypeOfContent" %>
+  </div>
   <div class="W_NavigationCreatePost">
     <% if current_user && current_user.admin?%>
       <%= link_to " + Создать коллекцию", new_admin_collection_path,class:"A_Button" %>

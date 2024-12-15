@@ -4,7 +4,7 @@
     <% if params[:collection_id].present? %>
       <%= link_to "<- Вернуться в коллекцию", collection_path(params[:collection_id]) %>
     <% else %>
-      <%= link_to "<- К постам", posts_path %>
+      <%= link_to "<- Назад", request.referer || posts_path, class: "A_BackLink" %>
     <% end %>
     <div class="M_Options">
       <div class="M_ActionButton">
@@ -63,3 +63,4 @@
     <p>Тип: <%= display.display_type %></p>
   </div>
 <% end %>
+<%= render partial: "like/button", locals: {likable: @post} %>

@@ -4,6 +4,7 @@
     <%= image_tag @profile.avatar_url,class: "A_ProfileAvatar"%>
     <div class="M_Subtext">
       <h3 class="Subtitle_20"><%= @profile.name %></h3>
+      <p><%= @profile.contact %></p>
       <p><%= @profile.bio %></p>
     </div>
   </div>
@@ -20,25 +21,7 @@
     <% end%>
   </div>
 </div>
-</div>
-<div class="S_Works">
-  <h2>Работы пользователя</h2>
-  <div class="C_AllPosts">
-    <% @posts.each do |post| %>
-      <%= render 'posts/post', post: post %>
-    <% end %>
-  </div>
-  <h2>Коллекции</h2>
-  <div class="C_Collections">
-    <% if @collections.present? %>
-      <% @collections.each do |collection| %>
-        <%= render 'collections/collection', collection: collection %>
-      <% end %>
-    <% else %>
-      <p>У этого пользователя пока нет коллекций.</p>
-    <% end %>
-  </div>
-</div>
+<%# Displays %>
 <div class="S_Displays">
   <h2>Выставки</h2>
   <div class="C_Displays">
@@ -51,4 +34,24 @@
     <%= link_to "Back to profiles", profiles_path %>
     <%= button_to "Destroy this profile", @profile, method: :delete %>
   </div>
+</div>
+<div class="W_TabsProfile">
+  <a href="#collections" class="A_TabButton">Коллекции</a>
+  <a href="#posts" class="A_TabButton">Работы</a>
+</div>
+<!-- Блок коллекций -->
+<div class="C_Collections profile" id="collections">
+  <% if @collections.present? %>
+    <% @collections.each do |collection| %>
+      <%= render 'collections/collection', collection: collection %>
+    <% end %>
+  <% else %>
+    <p>У этого пользователя пока нет коллекций.</p>
+  <% end %>
+</div>
+<!-- Блок работ -->
+<div class="C_AllPosts profile" id="posts">
+  <% @posts.each do |post| %>
+    <div class="O_Post"><%= render 'posts/post', post: post %></div>
+  <% end %>
 </div>

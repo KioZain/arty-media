@@ -37,13 +37,6 @@ body {
   margin-bottom: 10rem;
 }
 
-.C_Collections {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 10rem;
-}
-
 .M_HeadLinks {
   width: 100%;
   display: flex;
@@ -112,4 +105,46 @@ body {
 .active-link {
   text-decoration: underline;
   font-weight: bold;
+}
+
+.A_AuthorProfile {
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid var(--almost-black);
+  margin-bottom: 1rem;
+}
+.A_ShowDescription {
+  width: 80%;
+}
+.A_Comment {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  height: fit-content;
+
+  .A_Mail {
+    font-weight: bold;
+  }
+
+  .A_CommentBody {
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--almost-black);
+    background-color: rgb(204, 204, 204);
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+}
+/* Profile */
+.A_ProfileAvatar {
+  width: 7rem;
+  border: 0.5px solid var(--almost-black);
+  border-radius: 200px;
 }
