@@ -1,3 +1,8 @@
+<div class="W_ProfileMenu">
+  <%= link_to "Работы", posts_profile_path(@profile), class: "A_ProfileLink" %>
+  <%= link_to "Коллекции", collections_profile_path(@profile), class: "A_ProfileLink" %>
+  <%# <%= link_to "Выставки", displays_profile_path(@profile), class: "A_ProfileLink" %>
+</div>
 <p style="color: green"><%= notice %></p>
 <div class="O_ProfileInfo">
   <div class="M_ProfileHead">
@@ -11,16 +16,38 @@
   <div class="C_ProfileStats">
     <p>Работ: <%= @profile.user.posts.count %></p>
     <p>Коллекций: <%= @profile.user.collections.count %></p>
-    <p><% display_names = @displays.first(3).pluck(:name) %></p>
-    <p>Участие: <%= display_names.join(", ") %></p>
-  </div>
-  <div class="M_ProfileActions">
-    <% if current_user && current_user.admin?%>
-      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
-      <%= link_to " + Создать коллекцию", new_admin_collection_path, class:"A_Button",style: "color:black; text-decoration: none; background:inherit; border: 1px solid black" %>
-    <% end%>
   </div>
 </div>
+<% if @posts.present? %>
+  <h2>Работы пользователя:</h2>
+  <div class="C_AllPosts">
+    <% if current_user && current_user.admin?%>
+      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
+    <% end%>
+    <% @posts.each do |post| %>
+      <div class="O_Post"><%= render 'posts/post', post: post %></div>
+    <% end %>
+  </div>
+<% elsif @collections.present? %>
+  <h2>Коллекции пользователя:</h2>
+  <div class="C_Collections">
+    <% if current_user && current_user.admin?%>
+      <%= link_to " + Создать коллекцию", new_admin_collection_path, class:"A_Button",style: "color:black; text-decoration: none; background:inherit; border: 1px solid black" %>
+    <% end %>
+    <% @collections.each do |collection| %>
+      <%= render 'collections/collection', collection: collection %>
+    <% end %>
+  </div>
+<% elsif @exhibitions.present? %>
+  <h2>Выставки пользователя:</h2>
+  <div class="C_Exhibitions">
+    <% @exhibitions.each do |exhibition| %>
+      <%= render 'exhibitions/exhibition', exhibition: exhibition %>
+    <% end %>
+  </div>
+<% else %>
+  <p>Данные отсутствуют.</p>
+<% end %>
 <%# Displays %>
 <div class="S_Displays">
   <h2>Выставки</h2>
@@ -34,24 +61,4 @@
     <%= link_to "Back to profiles", profiles_path %>
     <%= button_to "Destroy this profile", @profile, method: :delete %>
   </div>
-</div>
-<div class="W_TabsProfile">
-  <a href="#collections" class="A_TabButton">Коллекции</a>
-  <a href="#posts" class="A_TabButton">Работы</a>
-</div>
-<!-- Блок коллекций -->
-<div class="C_Collections profile" id="collections">
-  <% if @collections.present? %>
-    <% @collections.each do |collection| %>
-      <%= render 'collections/collection', collection: collection %>
-    <% end %>
-  <% else %>
-    <p>У этого пользователя пока нет коллекций.</p>
-  <% end %>
-</div>
-<!-- Блок работ -->
-<div class="C_AllPosts profile" id="posts">
-  <% @posts.each do |post| %>
-    <div class="O_Post"><%= render 'posts/post', post: post %></div>
-  <% end %>
 </div>

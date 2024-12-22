@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[ show edit update destroy ]
+  before_action :set_profile, only: [ :show, :edit, :update, :destroy, :posts, :collections ]
 
   # GET /profiles or /profiles.json
   def index
@@ -17,6 +17,26 @@ class ProfilesController < ApplicationController
     @posts = @profile.user.posts
     @displays = Display.where(post_id: @posts.pluck(:id))
   end
+
+
+  def posts
+    @user = @profile.user
+    @posts = @profile.user.posts
+    render :show
+  end
+
+  def collections
+    @user = @profile.user
+    @collections = @profile.user.collections
+    render :show
+  end
+
+  def displays
+    @user = @profile.user
+    @displays = Display.where(post_id: @posts.pluck(:id))
+    render :show
+  end
+
 
   # GET /profiles/new
   def new

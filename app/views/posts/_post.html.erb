@@ -1,10 +1,21 @@
-<% 
+<%
   shape_class = "default"
-  if post.category_list[0].downcase == "керамика" 
-  shape_class = "Q_Ceramics"
 
-  elsif post.category_list[0].downcase == "живопись"
-  shape_class = "Q_ArtPaint"
+  case post.category_list[0]&.downcase
+  when "керамика"
+    shape_class = "Q_CeramicsClip"
+
+  when "картина"
+    shape_class = "Q_ArtPaintClip"
+
+  when "скульптура"
+    shape_class = "Q_SculptureClip"
+
+  when "полиграфия"
+    shape_class = "Q_PrintClip"
+
+  when "текстиль"
+    shape_class = "Q_TextileClip"
   end
 %>
 <!-- Tags -->
@@ -14,9 +25,10 @@
   <% end %>
 </div>
 <!-- Image -->
-<%# Тут картинка у которой меняется класс. %>
 <%= link_to post_path(post), class: "Q_PostImageLink" do %>
-  <%= image_tag post.post_image.url, class: "Q_PostImage" %>
+  <div class="Q_PostWrapper <%= shape_class %>">
+    <%= image_tag post.post_image.url, class: "Q_PostImage" %>
+  </div>
 <% end %>
 <!-- Category -->
 <div class="A_Category" style="margin-top: 1rem;">
