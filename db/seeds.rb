@@ -54,7 +54,7 @@
     "bio": "A senior at the China International Art University, Xhou has become well-known for his miniature sculptures, often the size of a rice granule, that are displayed by rear projection of microscope images on canvas. Xhou will discuss the art and science behind his incredibly detailed works of art."
   }
 ]
-@tags = [ "cюрреализм", "нежность", "онтология", "природа", "повседневность", "философия", "жизнь", "цифра", "семантика" ]
+@tags = [ "cюрреализм", "нежность", "онтология", "природа", "повседневность", "философия", "жизнь", "шляпа", "семантика" ]
 
 @price = [ 10000, 500, 200, 2200, 3200, 4200, 6200 ]
 @categories = [ "керамика", "картина", "скульптура", "диджитал", "печтная графика" ]
@@ -183,7 +183,7 @@ def create_posts(quantity)
     )
     # post.category_list = [ @categories.sample ]
     post.tag_list = @tags.sample(rand(2..3))
-    post.category_list = [ @categories.sample ]
+    post.category_list =  @categories.sample.downcase
     post.save!
 
      post.displays.create(

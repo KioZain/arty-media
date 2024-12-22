@@ -1,3 +1,12 @@
+<% 
+  shape_class = "default"
+  if post.category_list[0].downcase == "керамика" 
+  shape_class = "Q_Ceramics"
+
+  elsif post.category_list[0].downcase == "живопись"
+  shape_class = "Q_ArtPaint"
+  end
+%>
 <!-- Tags -->
 <div class="C_Tags">
   <% post.tags.each do |tag| %>
@@ -5,6 +14,7 @@
   <% end %>
 </div>
 <!-- Image -->
+<%# Тут картинка у которой меняется класс. %>
 <%= link_to post_path(post), class: "Q_PostImageLink" do %>
   <%= image_tag post.post_image.url, class: "Q_PostImage" %>
 <% end %>
