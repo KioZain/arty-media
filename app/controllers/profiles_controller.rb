@@ -1,10 +1,10 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [ :show, :edit, :update, :destroy, :posts, :collections ]
+  before_action :set_profile, only: [ :show, :edit, :update, :destroy, :posts, :collections, :displays ]
 
   # GET /profiles or /profiles.json
   def index
     @profiles = Profile.includes(:user)
-     @profile_post_counts = Post.group(:user_id).count
+    @profile_post_counts = Post.group(:user_id).count
     @profile_collection_counts = Collection.group(:user_id).count
   end
 
@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
 
   def displays
     @user = @profile.user
+    @posts = @profile.user.posts
     @displays = Display.where(post_id: @posts.pluck(:id))
     render :show
   end

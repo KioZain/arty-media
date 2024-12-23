@@ -41,6 +41,12 @@
     }
   }
 }
+/* PostShow */
+.O_PostShow {
+  background-color: var(--sand-yellow);
+  padding: 3rem 0;
+}
+
 .O_ProfileInfo {
   display: flex;
   width: var(--width-container);

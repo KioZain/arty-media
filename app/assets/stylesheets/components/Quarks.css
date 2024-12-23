@@ -16,10 +16,35 @@ h3 {
   font-weight: 600;
 }
 
+.O_HeaderMenu {
+  .Q_SharpPoint {
+    background-image: url("/assets/sharp_points/sharpWhite.svg");
+    position: absolute;
+    width: 252px;
+    height: 22px;
+    background-size: cover;
+    bottom: -22px;
+    left: 0;
+  }
+}
+.Q_SharpPoint {
+  background-image: url("/assets/sharp_points/sharpWhite.svg");
+  position: absolute;
+  width: 252px;
+  height: 22px;
+  background-size: cover;
+  bottom: -22px;
+  left: 0;
+
+  &:nth-child(2) {
+    left: 77.5%;
+  }
+}
+
 .Q_ShowPostImage {
-  grid-column: 1/5;
+  grid-column: 4/8;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 200rem;
 }
 .default {
   clip-path: none;

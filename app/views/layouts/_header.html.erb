@@ -1,23 +1,27 @@
 <header class="S_Header">
-  <nav class="C_Links">
-    <div class="M_LinksAbout">
-      <%= link_to "ARTOVOE", root_path,class: "nav_link" %>
-      <%= link_to "О нас", about_path,class: "nav_link" %>
+  <div class="O_HeaderMenu">
+    <div class="Q_SharpPoint"></div>
+    <div class="Q_SharpPoint"></div>
+    <nav class="C_Links">
+      <div class="M_LinksAbout">
+        <%= link_to "ARTOVOE", root_path,class: "nav_link" %>
+        <%= link_to "О нас", about_path,class: "nav_link" %>
+      </div>
+      <%# Admin link %>
+    </nav>
+    <div class="M_LinksInner">
+      <%= link_to "Работы", posts_url,class: "nav_link" %>
+      <%= link_to "Художники", profiles_path,class: "nav_link" %>
     </div>
-    <%# Admin link %>
-  </nav>
-  <div class="M_LinksInner">
-    <%= link_to "Работы", posts_url,class: "nav_link" %>
-    <%= link_to "Художники", profiles_path,class: "nav_link" %>
+    <nav class="C_Links">
+      <% if current_user && current_user.admin?%>
+        <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to "Профиль", profile_path(current_user.profile) %>
+      <% else %>
+        <%= link_to "Войти", new_user_session_path %>
+      <% end %>
+    </nav>
   </div>
-  <nav class="C_Links">
-    <% if current_user && current_user.admin?%>
-      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
-    <% end %>
-    <% if user_signed_in? %>
-      <%= link_to "Профиль", profile_path(current_user.profile) %>
-    <% else %>
-      <%= link_to "Войти", new_user_session_path %>
-    <% end %>
-  </nav>
 </header>

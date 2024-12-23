@@ -19,8 +19,14 @@
 }
 .W_Post {
   display: grid;
+  width: var(--width-container);
   grid-template-columns: repeat(9, 1fr);
   gap: 1rem;
+  margin: 0 auto;
+
+  .O_Display {
+    grid-column: 8/10;
+  }
 }
 /* PostShow */
 .W_TitleTags {

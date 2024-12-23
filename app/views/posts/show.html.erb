@@ -1,45 +1,70 @@
 <div class="L_PostShow">
   <p style="color: green"><%= notice %></p>
-  <div class="M_HeadLinks">
-    <% if params[:collection_id].present? %>
-      <%= link_to "<- Вернуться в коллекцию", collection_path(params[:collection_id]) %>
-    <% else %>
-      <%= link_to "<- Назад", request.referer || posts_path, class: "A_BackLink" %>
-    <% end %>
-    <div class="M_Options">
-      <div class="M_ActionButton">
-        <% if can?(:manage, @post) %>
-          <%= link_to "Изменить", edit_admin_post_path(@post), class: 'A_Edit' %>
-          <%= button_to "⌦Удалить пост", admin_post_path(@post), method: :delete %>
-        <% else %>
-          <p>Авторизируйтесь, чтобы редактировать</p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <div class="W_Post">
-    <%= image_tag @post.post_image.url, class: "Q_ShowPostImage"  %>
-    <div class="S_Post">
-      <p class="A_AuthorProfile">Автор: <%= @post.user.profile.name %></p>
-      <div class="W_TitleTags">
-        <h1><%= @post.title %></h1>
-        <div class="C_Tags">
+  <div class="O_PostShow">
+    <div class="M_HeadLinks">
+      <% if params[:collection_id].present? %>
+        <%= link_to "<- Вернуться в коллекцию", collection_path(params[:collection_id]) %>
+      <% else %>
+        <%= link_to "<- Назад", request.referer || posts_path, class: "A_BackLink" %>
+      <% end %>
+      <div class="M_Options">
+        <div class="M_ActionButton">
+          <% if can?(:manage, @post) %>
+            <%= link_to "Изменить", edit_admin_post_path(@post), class: 'A_Edit' %>
+            <%= button_to "⌦Удалить пост", admin_post_path(@post), method: :delete %>
+          <% else %>
+            <p>Авторизируйтесь, чтобы редактировать</p>
+          <% end %>
+          <%= render partial: "like/button", locals: {likable: @post} %>
         </div>
-        <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>
-        <% end %>
-      </div>
-      <p class="A_ShowDescription"><%= @post.body%></p>
-      <div class="C_DataPost">
-        <p>Город:<br>
-          <%= @post.city %></p>
-        <p>Тиражность:<br>
-          <%= @post.amount %></p>
-        <p>Цена:<br>
-          <%= @post.price %></p>
       </div>
     </div>
+    <div class="W_Post">
+      <%= image_tag @post.post_image.url, class: "Q_ShowPostImage"  %>
+      <div class="S_Post">
+        <p class="A_AuthorProfile">Автор: <%= @post.user.profile.name %></p>
+        <div class="W_TitleTags">
+          <h1><%= @post.title %></h1>
+          <div class="C_Tags">
+          </div>
+          <% @post.tags.each do |tag| %>
+            <%= link_to tag.name, tagged_posts_path(tag.name), class: "A_Tag" %>
+          <% end %>
+        </div>
+        <p class="A_ShowDescription"><%= @post.body%></p>
+        <div class="C_DataPost">
+          <p>Город:<br>
+            <%= @post.city %></p>
+          <p>Тиражность:<br>
+            <%= @post.amount %></p>
+          <p>Цена:<br>
+            <%= @post.price %></p>
+        </div>
+      </div>
+      <% @post.displays.each do |display| %>
+        <div class="O_Display">
+          <p>Название: <%= display.name %></p>
+          <p>Год: <%= display.year %></p>
+          <p>Тип: <%= display.display_type %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
+  <% if @other_posts.present? %>
+    <div class="S_OtherPosts">
+      <div class="M_MoreWorks">
+        <h2>Другие работы автора</h2>
+        <%= link_to "В профиль", profile_path(@post.user.profile) %>
+      </div>
+      <div class="C_AllPosts">
+        <% @other_posts.each do |other_post| %>
+          <div class="O_Post">
+            <%= render 'posts/post', post: other_post %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <div class="S_Comments">
     <h2 style="text-align: center;">Комментарии</h2>
     <div class="C_Comments" >
@@ -52,15 +77,3 @@
       </div>
     </div>
   </div>
-  <div class="O_Display">
-    <h4>Выставки:</h4>
-  </div>
-</div>
-<% @post.displays.each do |display| %>
-  <div class="O_Display">
-    <p>Название: <%= display.name %></p>
-    <p>Год: <%= display.year %></p>
-    <p>Тип: <%= display.display_type %></p>
-  </div>
-<% end %>
-<%= render partial: "like/button", locals: {likable: @post} %>

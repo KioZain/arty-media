@@ -1,7 +1,7 @@
 <div class="W_ProfileMenu">
   <%= link_to "Работы", posts_profile_path(@profile), class: "A_ProfileLink" %>
   <%= link_to "Коллекции", collections_profile_path(@profile), class: "A_ProfileLink" %>
-  <%# <%= link_to "Выставки", displays_profile_path(@profile), class: "A_ProfileLink" %>
+  <%= link_to "Выставки", displays_profile_path(@profile), class: "A_ProfileLink" %>
 </div>
 <p style="color: green"><%= notice %></p>
 <div class="O_ProfileInfo">
@@ -18,47 +18,39 @@
     <p>Коллекций: <%= @profile.user.collections.count %></p>
   </div>
 </div>
-<% if @posts.present? %>
-  <h2>Работы пользователя:</h2>
-  <div class="C_AllPosts">
-    <% if current_user && current_user.admin?%>
-      <%= link_to " + Создать пост", new_admin_post_path, class:"A_Button",style: "color:#ffffff;text-decoration: none"; %>
-    <% end%>
-    <% @posts.each do |post| %>
-      <div class="O_Post"><%= render 'posts/post', post: post %></div>
-    <% end %>
-  </div>
-<% elsif @collections.present? %>
-  <h2>Коллекции пользователя:</h2>
-  <div class="C_Collections">
-    <% if current_user && current_user.admin?%>
-      <%= link_to " + Создать коллекцию", new_admin_collection_path, class:"A_Button",style: "color:black; text-decoration: none; background:inherit; border: 1px solid black" %>
-    <% end %>
-    <% @collections.each do |collection| %>
-      <%= render 'collections/collection', collection: collection %>
-    <% end %>
-  </div>
-<% elsif @exhibitions.present? %>
+<% if action_name == "posts" %>
+  <% if @posts.present? %>
+    <h2>Работы пользователя:</h2>
+    <div class="C_AllPosts">
+      <% if current_user && current_user.admin? %>
+        <%= link_to " + Создать пост", new_admin_post_path, class: "A_Button", style: "color:#ffffff; text-decoration: none;" %>
+      <% end %>
+      <% @posts.each do |post| %>
+        <div class="O_Post"><%= render 'posts/post', post: post %></div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>У пользователя пока нет работ.</p>
+  <% end %>
+<% elsif action_name == "collections" %>
+  <% if @collections.present? %>
+    <h2>Коллекции пользователя:</h2>
+    <div class="C_Collections">
+      <% if current_user && current_user.admin? %>
+        <%= link_to " + Создать коллекцию", new_admin_collection_path, class: "A_Button", style: "color:black; text-decoration: none; background:inherit; border: 1px solid black" %>
+      <% end %>
+      <% @collections.each do |collection| %>
+        <%= render 'collections/collection', collection: collection %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>У пользователя пока нет коллекций.</p>
+  <% end %>
+<% elsif action_name == "displays" %>
   <h2>Выставки пользователя:</h2>
-  <div class="C_Exhibitions">
-    <% @exhibitions.each do |exhibition| %>
-      <%= render 'exhibitions/exhibition', exhibition: exhibition %>
-    <% end %>
-  </div>
-<% else %>
-  <p>Данные отсутствуют.</p>
-<% end %>
-<%# Displays %>
-<div class="S_Displays">
-  <h2>Выставки</h2>
   <div class="C_Displays">
     <% @displays.each do |display| %>
       <%= render 'displays/display', display: display %>
     <% end %>
   </div>
-  <div class="W_EditButtonsProfile">
-    <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-    <%= link_to "Back to profiles", profiles_path %>
-    <%= button_to "Destroy this profile", @profile, method: :delete %>
-  </div>
-</div>
+<% end %>
